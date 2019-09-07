@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="第九届JavaB组省赛题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯备考-第九届JavaB组省赛题解">
+<meta property="og:url" content="http://Chacha-Z.github.io/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/index.html">
+<meta property="og:site_name" content="Chacha_Z">
+<meta property="og:description" content="第九届JavaB组省赛题解">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-23T12:20:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蓝桥杯备考-第九届JavaB组省赛题解">
+<meta name="twitter:description" content="第九届JavaB组省赛题解">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chacha_Z" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://Chacha-Z.github.io/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>蓝桥杯备考-第九届JavaB组省赛题解 | Chacha_Z</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chacha_Z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">may you forever young.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Chacha-Z.github.io/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叉叉儿">
+      <meta itemprop="description" content="life is short, just code.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chacha_Z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">蓝桥杯备考-第九届JavaB组省赛题解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-21 20:03:31" itemprop="dateCreated datePublished" datetime="2019-03-21T20:03:31+08:00">2019-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-23 20:20:14" itemprop="dateModified" datetime="2019-03-23T20:20:14+08:00">2019-03-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/蓝桥杯/" itemprop="url" rel="index"><span itemprop="name">蓝桥杯</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/21/蓝桥杯备考-第九届JavaB组省赛题解/" class="leancloud_visitors" data-flag-title="蓝桥杯备考-第九届JavaB组省赛题解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">第九届JavaB组省赛题解</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第几天"><a href="#第几天" class="headerlink" title="第几天"></a>第几天</h2><pre>
+标题：第几天
+
+2000年的1月1日，是那一年的第1天。
+那么，2000年的5月4日，是那一年的第几天？
+
+注意：需要提交的是一个整数，不要填写任何多余内容。
+</pre>
+
+<pre><code>思路：很简单，电脑有自带日期计算器
+注意：1月1日算作第一天，所以最后结果要加1（计算器算出的结果）
+    口算：2000年是闰年，31+29+31+20+4 = 125
+</code></pre><h2 id="方格计数"><a href="#方格计数" class="headerlink" title="方格计数"></a>方格计数</h2><pre>
+标题：方格计数
+
+如图p1.png所示，在二维平面上有无数个1x1的小方格。
+
+我们以某个小方格的一个顶点为圆心画一个半径为1000的圆。
+你能计算出这个圆里有多少个完整的小方格吗？ 
+
+注意：需要提交的是一个整数，不要填写任何多余内容。
+</pre>
+
+<p><a href="/p1.png">!方格</a></p>
+<pre><code>思路：我的妈我在想什么，一开始想半径1000能容纳多少个根号2就有对应多少个方格能够被包括在里面  
+不是的啊！还有在这个n*根号2正方形之外还有可能被包括的   
+[!方格2](/p2.png)
+所以正确的想法应该是，代码实现，遍历一个象限（第一象限），1000边长内，有多少小方格的右上顶点在1000半径内
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">1000</span>; ++i)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">1000</span>; ++j)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i*i + j*j &lt;= <span class="number">1000000</span>)&#123;</span><br><span class="line">			count ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(count*<span class="number">4</span>); <span class="comment">//3137548</span></span><br></pre></td></tr></table></figure>
+<h2 id="复数幂（未实现快速幂）"><a href="#复数幂（未实现快速幂）" class="headerlink" title="复数幂（未实现快速幂）"></a>复数幂（未实现快速幂）</h2><pre>
+标题：复数幂
+
+设i为虚数单位。对于任意正整数n，(2+3i)^n 的实部和虚部都是整数。
+求 (2+3i)^123456 等于多少？ 即(2+3i)的123456次幂，这个数字很大，要求精确表示。
+
+答案写成 "实部±虚部i" 的形式，实部和虚部都是整数（不能用科学计数法表示），中间任何地方都不加空格，
+实部为正时前面不加正号。(2+3i)^2 写成: -5+12i，
+(2+3i)^5 的写成: 122-597i
+
+注意：需要提交的是一个很庞大的复数，不要填写任何多余内容。
+</pre>
+
+<pre><code>思路：计算很简单，就算暴力循环123456次好像也可以接受  
+只是，这个数，真的真的真的很庞大，庞大到！我的eclipse显示不出来，显示了两行-，就没啦   
+</code></pre><p><a href="/plurResult.png">!复数结果</a><br>    原来，只是因为数太大了，赋值控制台这些空白，粘贴到记事本中就可以看到了<br><a href="/plurResult2.png">!复数结果</a><br>    重点：大数计算 BigInteger类</p>
+<pre><code>1. BigInteger.valueOf()
+2. 自带加减乘除方法
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BigInteger a = BigInteger.valueOf(<span class="number">2</span>); </span><br><span class="line">BigInteger b = BigInteger.valueOf(<span class="number">3</span>); </span><br><span class="line"></span><br><span class="line">BigInteger A = a;</span><br><span class="line">BigInteger B = b;</span><br><span class="line"></span><br><span class="line">BigInteger tempA = A;</span><br><span class="line">BigInteger tempB = B;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">123456</span>; ++i)&#123;</span><br><span class="line">    tempA = A;</span><br><span class="line">    tempB = B;</span><br><span class="line">    </span><br><span class="line">    A = tempA.multiply(a).subtract(tempB.multiply(b));</span><br><span class="line">    B = b.multiply(tempA).add(a.multiply(tempB));</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(A);</span><br><span class="line">System.out.println(B);</span><br></pre></td></tr></table></figure>
+<pre><code>这还是太暴力了，已经要运行一小会儿了，尝试使用java快速幂优化，占个坑
+</code></pre><h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><p><a href="https://blog.csdn.net/Du_Mingm/article/details/79201564" target="_blank" rel="noopener">!</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="comment">//a^b</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">if</span>(b&amp;<span class="number">1</span>)<span class="comment">//等价与b%2</span></span><br><span class="line">        <span class="keyword">return</span> a*pow(a*a,b/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> pow(a*a,b/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="comment">//秦九韶算法按自底向上理解</span></span><br><span class="line"><span class="comment">//或按二进制指数理解</span></span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">1</span>,base=a;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            ans*=base;</span><br><span class="line">        base*=base;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;<span class="comment">//等价b/=2</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="测试次数（错误）（已解决）"><a href="#测试次数（错误）（已解决）" class="headerlink" title="测试次数（错误）（已解决）"></a>测试次数（错误）（已解决）</h2><pre>
+标题：测试次数
+
+x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。
+各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。
+
+x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。
+
+如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。
+特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。
+如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n
+
+为了减少测试次数，从每个厂家抽样3部手机参加测试。
+
+某次测试的塔高为1000层，如果我们总是采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？
+
+请填写这个最多测试次数。
+
+注意：需要填写的是一个整数，不要填写任何多余内容。
+</pre>
+
+<pre><code>思路：没有思路，一开始想二分法，肯定是错的啊，手机只有三台能够测试  
+注意读题啊！只有三台手机可以用来摔，是测这种手机的，不是测每台手机的  
+在理解这道题之前我们先了解“摔鸡蛋问题”
+</code></pre><h3 id="摔鸡蛋问题"><a href="#摔鸡蛋问题" class="headerlink" title="摔鸡蛋问题"></a>摔鸡蛋问题</h3><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre>
+标题：快速排序  
+
+以下代码可以从数组a[]中找出第k小的元素。   
+
+它使用了类似快速排序中的分治算法，期望时间复杂度是O(N)的。
+
+请仔细阅读分析源码，填写划线部分缺失的内容。
+</pre>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">quickSelect</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">		Random rand = <span class="keyword">new</span> Random();</span><br><span class="line">		<span class="keyword">int</span> p = rand.nextInt(r - l + <span class="number">1</span>) + l;</span><br><span class="line">		<span class="keyword">int</span> x = a[p];</span><br><span class="line">		<span class="keyword">int</span> tmp = a[p]; a[p] = a[r]; a[r] = tmp;</span><br><span class="line">		<span class="keyword">int</span> i = l, j = r;</span><br><span class="line">		<span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">                	<span class="keyword">while</span>(i &lt; j &amp;&amp; a[i] &lt; x) i++;</span><br><span class="line">                	<span class="keyword">if</span>(i &lt; j) &#123;</span><br><span class="line">                        	a[j] = a[i];</span><br><span class="line">                        	j--;</span><br><span class="line">                	&#125;</span><br><span class="line">                	<span class="keyword">while</span>(i &lt; j &amp;&amp; a[j] &gt; x) j--;</span><br><span class="line">                	<span class="keyword">if</span>(i &lt; j) &#123;</span><br><span class="line">                        	a[i] = a[j];</span><br><span class="line">                        	i++;</span><br><span class="line">                	&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        	a[i] = x;</span><br><span class="line">        	p = i;</span><br><span class="line">        	<span class="keyword">if</span>(i - l + <span class="number">1</span> == k) <span class="keyword">return</span> a[i];</span><br><span class="line">        	<span class="keyword">if</span>(i - l + <span class="number">1</span> &lt; k) <span class="keyword">return</span> quickSelect( _________________________________ ); <span class="comment">//填空</span></span><br><span class="line">        	<span class="keyword">else</span> <span class="keyword">return</span> quickSelect(a, l, i - <span class="number">1</span>, k);	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> [] a = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">		System.out.println(quickSelect(a, <span class="number">0</span>, <span class="number">5</span>, <span class="number">4</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>思路：
+    复习一下快速排序的思路：分而治之，选择一个“标兵”，把比他大的全部移到他右边，把比他小的全部移到他左边  
+    该代码思路：随机选择一个数，把比他大的全部移到他右边，把比他小的全部移到他左边，最后返回该数最后的位置  
+    这个位置即为相对左边界第几大！！（关键）  
+    然后!如果这个位置比k大，说明目标数在左边，则递归左边，否则递归右边（注意右边时，k应该是相对左边界的，所以要减该位置表示大小
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(i - l + <span class="number">1</span> &lt; k) <span class="keyword">return</span> quickSelect(a, i+<span class="number">1</span>, r, k-i+l-<span class="number">1</span>); <span class="comment">//填空</span></span><br></pre></td></tr></table></figure>
+<h2 id="递增三元组"><a href="#递增三元组" class="headerlink" title="递增三元组"></a>递增三元组</h2><pre>
+标题：递增三元组
+
+给定三个整数数组
+A = [A1, A2, ... AN],   
+B = [B1, B2, ... BN],   
+C = [C1, C2, ... CN]，  
+请你统计有多少个三元组(i, j, k) 满足：  
+
+1. 1 <= 0 1 2 3 27 i, j, k <="N" 2. ai bj ck 【输入格式】 第一行包含一个整数n。 第二行包含n个整数a1, a2, ... an。 第三行包含n个整数b1, b2, bn。 第四行包含n个整数c1, c2, cn。 对于30%的数据，1 对于60%的数据，1 对于100%的数据，1 bi, ci 【输出格式】 一个整数表示答案 【输入样例】 【输出样例】 pre>
+
+<pre><code>思路：为了不暴力循环，因为我们只需要知道比上一个循环数大的数有多少个，所以对每个三元组从小到大排序  
+还有一个关键问题：怎样累积，乘还是加
+还要注意，不同位置算不同组合
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IncreaseTriplet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO 自动生成的方法存根</span></span><br><span class="line">		<span class="keyword">int</span>[] test = &#123;<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>&#125;;</span><br><span class="line">		System.out.println(search(test, <span class="number">1</span>));</span><br><span class="line">		</span><br><span class="line">		Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> N = scanner.nextInt();</span><br><span class="line">		scanner.nextLine();</span><br><span class="line">		<span class="keyword">int</span>[] A = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">		<span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">		<span class="keyword">int</span>[] C = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">		</span><br><span class="line">		String[] tempA = scanner.nextLine().split(<span class="string">" "</span>);</span><br><span class="line">		String[] tempB = scanner.nextLine().split(<span class="string">" "</span>);</span><br><span class="line">		String[] tempC = scanner.nextLine().split(<span class="string">" "</span>);</span><br><span class="line">		scanner.close();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)&#123;</span><br><span class="line">			A[i] = Integer.valueOf(tempA[i]);</span><br><span class="line">			B[i] = Integer.valueOf(tempB[i]);</span><br><span class="line">			C[i] = Integer.valueOf(tempC[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(deal(A, B, C));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">deal</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B, <span class="keyword">int</span>[] C)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> N = A.length;</span><br><span class="line">		</span><br><span class="line">		Arrays.sort(A);</span><br><span class="line">		Arrays.sort(B);</span><br><span class="line">		Arrays.sort(C);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;  <span class="comment">//累积1</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> a = A[i];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> countBC = <span class="number">0</span>;    <span class="comment">//累积2</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = search(B, a); j &lt; N; ++j)&#123;</span><br><span class="line">				<span class="keyword">int</span> b = B[j];</span><br><span class="line">				</span><br><span class="line">				countBC += N - search(C, b);</span><br><span class="line">				</span><br><span class="line">				System.out.println(search(C, b));</span><br><span class="line">			&#125;</span><br><span class="line">			count += countBC;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//返回数组中第一个大于A的数</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> low = <span class="number">0</span>; </span><br><span class="line">		<span class="keyword">int</span> high = a.length-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[mid] &lt; key)&#123;</span><br><span class="line">				low = mid+<span class="number">1</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				high = mid-<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> low;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="螺旋折线"><a href="#螺旋折线" class="headerlink" title="螺旋折线"></a>螺旋折线</h2><pre>
+标题：螺旋折线
+
+如图p1.pgn所示的螺旋折线经过平面上所有整点恰好一次。  
+对于整点(X, Y)，
+我们定义它到原点的距离dis(X, Y)是从原点到(X, Y)的螺旋折线段的长度。  
+
+例如dis(0, 1)=3, dis(-2, -1)=9  
+给出整点坐标(X, Y)，你能计算出dis(X, Y)吗？
+
+【输入格式】
+X和Y 
+
+对于40%的数据，-1000 <= 0 1 3 x, y <="1000" 对于70%的数据，-100000 对于100%的数据, -1000000000 【输出格式】 输出dis(x, y) 【输入样例】 【输出样例】 pre>
+
+<pre><code>思路：找规律，(-m,-m)(m&gt;0)处的点恰好等于所在正方形周长（加若干内圈正方形周长（内圈正方形周长有规律，求和））  
+以(-m, -m)点为参照点，可以计算出该点的长度，同一正方形上的点按规律递减  
+关键：因为输入数据，非常非常大，所以依旧只能使用BigInteter类,真的是看的我头大  
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> season9;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpiralBrokenLine</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO 自动生成的方法存根</span></span><br><span class="line">		<span class="comment">//System.out.println(deal(0, 0));</span></span><br><span class="line">		System.out.println(deal(-<span class="number">1000000000</span>, <span class="number">990000000</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BigInteger <span class="title">deal</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">		BigInteger base = BigInteger.valueOf(Math.max(Math.abs(x), Math.abs(y))); <span class="comment">//正数(-base, -base)</span></span><br><span class="line">		BigInteger baseResult = base.multiply(BigInteger.valueOf(<span class="number">8</span>));	<span class="comment">//x过大时注意改变存储数据类型</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		BigInteger distance = BigInteger.valueOf(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(BigInteger.valueOf(y).equals(base.negate()))&#123;</span><br><span class="line">			<span class="comment">//distance = baseResult - (x + base);</span></span><br><span class="line"></span><br><span class="line">			distance = baseResult.subtract(BigInteger.valueOf(x).add(base));</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(BigInteger.valueOf(x) == base)&#123;</span><br><span class="line">			<span class="comment">//distance = baseResult - base*2 - (y + base);</span></span><br><span class="line">			</span><br><span class="line">			distance = baseResult.subtract(BigInteger.valueOf(<span class="number">2</span>).multiply(base)).subtract(BigInteger.valueOf(y).add(base));</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(BigInteger.valueOf(y) == base)&#123;</span><br><span class="line">			<span class="comment">//distance = baseResult - 4*base - (base - x);</span></span><br><span class="line"></span><br><span class="line">			distance = baseResult.subtract(BigInteger.valueOf(<span class="number">4</span>).multiply(base)).subtract(base.subtract(BigInteger.valueOf(x)));</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(BigInteger.valueOf(x).equals(base.negate()))&#123;	<span class="comment">//不能用==号</span></span><br><span class="line">			<span class="comment">//distance = baseResult - 6*base - (base - y);</span></span><br><span class="line">			distance = baseResult.subtract(BigInteger.valueOf(<span class="number">6</span>).multiply(base)).subtract(base.subtract(BigInteger.valueOf(y)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//distance + 8*(base-1) + (base-2)*(base-1)*8/2;</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> distance.add(BigInteger.valueOf(<span class="number">8</span>).multiply(base.subtract(BigInteger.valueOf(<span class="number">1</span>)))).add(base.subtract(BigInteger.valueOf(<span class="number">2</span>)).multiply(base.subtract(BigInteger.valueOf(<span class="number">1</span>))).multiply(BigInteger.valueOf(<span class="number">8</span>)).divide(BigInteger.valueOf(<span class="number">2</span>))); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="日志统计（未解决）"><a href="#日志统计（未解决）" class="headerlink" title="日志统计（未解决）"></a>日志统计（未解决）</h2><blockquote>
+<p>标题：日志统计<br>小明维护着一个程序员论坛。现在他收集了一份”点赞”日志，日志共有N行。其中每一行的格式是：<br>ts id<br>表示在ts时刻编号id的帖子收到一个”赞”。<br>现在小明想统计有哪些帖子曾经是”热帖”。<br>如果一个帖子曾在任意一个长度为D的时间段内收到不少于K个赞，小明就认为这个帖子曾是”热帖”。<br>具体来说，如果存在某个时刻T满足该帖在[T, T+D)这段时间内(注意是左闭右开区间)收到不少于K个赞，该帖就曾是”热帖”。<br>给定日志，请你帮助小明统计出所有曾是”热帖”的帖子编号。   </p>
+</blockquote>
+<blockquote>
+<p>【输入格式】<br>第一行包含三个整数N、D和K。<br>以下N行每行一条日志，包含两个整数ts和id。<br>对于50%的数据，1 &lt;= K &lt;= N &lt;= 1000<br>对于100%的数据，1 &lt;= K &lt;= N &lt;= 100000 0 &lt;= ts &lt;= 100000 0 &lt;= id &lt;= 100000<br>【输出格式】<br>按从小到大的顺序输出热帖id。每个id一行。<br>【输入样例】<br>7 10 2<br>0 1<br>0 10<br>10 10<br>10 1<br>9 1<br>100 3<br>100 3<br>【输出样例】<br>1<br>3   </p>
+</blockquote>
+<p><strong>思路</strong>：看了人家的解答还觉得蛮好解得…最简单就是排序嘛按id处理<br>扩展：尺取法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比较好理解的方法，可是当数据很大的时候很困难（涉及排序）</span></span><br><span class="line"><span class="keyword">package</span> season9;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountFever</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n,d,k;</span><br><span class="line">		Scanner sc=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n=sc.nextInt();</span><br><span class="line">		d=sc.nextInt();</span><br><span class="line">		k=sc.nextInt();</span><br><span class="line">		Node arr[]=<span class="keyword">new</span> Node[n];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">			arr[i]=<span class="keyword">new</span> Node(sc.nextInt(),sc.nextInt());</span><br><span class="line">		Arrays.sort(arr);	<span class="comment">//先按id排序，再按ts升序排序</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		for(int i = 0; i &lt; n; ++i)&#123;</span></span><br><span class="line"><span class="comment">//			System.out.println(arr[i].ts + " " + arr[i].id);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">		<span class="keyword">int</span> curid=arr[<span class="number">0</span>].id;</span><br><span class="line">		<span class="keyword">int</span> added=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;			</span><br><span class="line">			<span class="keyword">if</span>(i+k-<span class="number">1</span>&lt;n&amp;&amp;arr[i+k-<span class="number">1</span>].id==curid&amp;&amp;arr[i+k-<span class="number">1</span>].ts-arr[i].ts&lt;d&amp;&amp;added==<span class="number">0</span>)</span><br><span class="line">				&#123;System.out.println(curid);added=<span class="number">1</span>;&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(arr[i].id!=curid)</span><br><span class="line">			&#123;</span><br><span class="line">				curid=arr[i].id;</span><br><span class="line">				added=<span class="number">0</span>;</span><br><span class="line">				i=i-<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Node</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ts,id;</span><br><span class="line">	Node(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><br><span class="line">	&#123;</span><br><span class="line">		ts=a;</span><br><span class="line">		id=b;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Node o)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(id==o.id)</span><br><span class="line">			<span class="keyword">return</span> ts-o.ts;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> id-o.id;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="尺取法"><a href="#尺取法" class="headerlink" title="尺取法"></a>尺取法</h3><blockquote>
+<p>有n个正整数组成一个序列，给定整数S，求长度最短的连续序列，使得他们的和大于等于S<br>设输入的序列为A[i], i=1..n, 构造前缀数组B[j], j=1..n, B[j]=B[j-1]+A[j], 规定B[0]=0, 当B[j]-B[i-1]&gt;=s的时候i增加<br>直至B[j]-B[i]&lt;s, 然后更新最短的满足条件的序列的长度j-i+1，复杂度为O（n）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define N 1200000</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[N];</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m,T,i,j;</span><br><span class="line"></span><br><span class="line">    scanf(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">        memset(dp,<span class="number">0</span>,sizeof(dp));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">            dp[i]=dp[i-<span class="number">1</span>]+a[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> minn=INF,i=<span class="number">1</span>;;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">             <span class="keyword">if</span>(dp[j]-dp[i-<span class="number">1</span>]&lt;m)</span><br><span class="line">                <span class="keyword">continue</span> ;</span><br><span class="line">             <span class="keyword">while</span>(dp[j]-dp[i]&gt;=m)</span><br><span class="line">                i++;</span><br><span class="line">             minn=min(minn,j-i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(minn==INF)</span><br><span class="line">        printf(<span class="string">"0\n"</span>);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        printf(<span class="string">"%d\n"</span>, minn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//尺取法做这道题</span></span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,d,k;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; journal[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">judge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; vec,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Size=vec.size();</span><br><span class="line">    <span class="keyword">if</span>(Size&lt;k) <span class="keyword">return</span> ;<span class="comment">//点赞条数小于k,肯定不能上热帖</span></span><br><span class="line">    sort(vec.begin(),vec.end());</span><br><span class="line">    <span class="keyword">int</span> st=<span class="number">0</span>,en=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(st&lt;=en&amp;&amp;en&lt;Size)&#123;</span><br><span class="line">        <span class="keyword">if</span>(vec[en]-vec[st]&lt;d)&#123;</span><br><span class="line">            cnt=max(cnt,en-st+<span class="number">1</span>);</span><br><span class="line">            en++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            st++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    cout&lt;&lt;"cnt="&lt;&lt;cnt&lt;&lt;" ";</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(cnt&gt;=k)&#123;</span><br><span class="line">        cout&lt;&lt;id&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;d&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ )&#123;</span><br><span class="line">        <span class="keyword">int</span> ts,id;</span><br><span class="line">        cin&gt;&gt;ts&gt;&gt;id;</span><br><span class="line">        journal[id].push_back(ts);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;maxn; i++ )&#123;</span><br><span class="line">        judge(journal[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="全球变暖"><a href="#全球变暖" class="headerlink" title="全球变暖"></a>全球变暖</h2><pre>
+标题：全球变暖
+你有一张某海域NxN像素的照片，"."表示海洋、"#"表示陆地，如下所示：
+.......
+.##....
+.##....
+....##.
+..####.
+...###.
+.......
+其中"上下左右"四个方向上连在一起的一片陆地组成一座岛屿。例如上图就有2座岛屿。  
+由于全球变暖导致了海面上升，科学家预测未来几十年，岛屿边缘一个像素的范围会被海水淹没。具体来说如果一块陆地像素与海洋相邻(上下左右四个相邻像素中有海洋)，它就会被淹没。  
+例如上图中的海域未来会变成如下样子：
+
+.......
+.......
+.......
+.......
+....#..
+.......
+.......
+
+请你计算：依照科学家的预测，照片中有多少岛屿会被完全淹没。  
+
+【输入格式】
+第一行包含一个整数N。  (1 <= 1 7 n <="1000)" 以下n行n列代表一张海域照片。 照片保证第1行、第1列、第n行、第n列的像素都是海洋。 【输出格式】 一个整数表示答案。 【输入样例】 ....... .##.... ....##. ..####. ...###. 【输出样例】 pre>
+
+<pre><code>思路：不是很懂他的题目描述的输出和输出样例竟然不是一个东西  
+题目很简单，遍历数组，如果周围（上下左右）有海则被淹没  
+且因为题目保证“照片保证第1行、第1列、第N行、第N列的像素都是海洋”，所以不用判断边界问题  
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="keyword">int</span> N = scanner.nextInt();</span><br><span class="line">scanner.nextLine();</span><br><span class="line"><span class="keyword">char</span>[][] island = <span class="keyword">new</span> <span class="keyword">char</span>[N][N];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)&#123;</span><br><span class="line">    String str = scanner.nextLine();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j)&#123;</span><br><span class="line">        island[i][j] = str.charAt(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">scanner.close();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> countAll = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N-<span class="number">1</span>; ++i)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; N-<span class="number">1</span>; ++j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(island[i][j] == <span class="string">'#'</span>)&#123;</span><br><span class="line">            countAll++;</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(island[i-<span class="number">1</span>][j] == <span class="string">'.'</span> || island[i][j-<span class="number">1</span>] == <span class="string">'.'</span> || island[i][j+<span class="number">1</span>] == <span class="string">'.'</span> || island[i+<span class="number">1</span>][j] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(countAll - count);</span><br></pre></td></tr></table></figure>
+<h2 id="堆的计数（未解决）"><a href="#堆的计数（未解决）" class="headerlink" title="堆的计数（未解决）"></a>堆的计数（未解决）</h2><pre>
+标题：堆的计数
+
+我们知道包含N个元素的堆可以看成是一棵包含N个节点的完全二叉树。  
+每个节点有一个权值。对于小根堆来说，父节点的权值一定小于其子节点的权值。  
+
+假设N个节点的权值分别是1~N，你能求出一共有多少种不同的小根堆吗？  
+
+例如对于N=4有如下3种：
+
+    1
+   / \
+  2   3
+ /a
+4
+
+    1
+   / \
+  3   2
+ /
+4
+
+    1
+   / \
+  2   4
+ /
+3
+
+由于数量可能超过整型范围，你只需要输出结果除以1000000009的余数。  
+
+【输入格式】
+一个整数N。  
+对于40%的数据，1 <= 3 4 n <="1000" 对于70%的数据，1 对于100%的数据，1 【输出格式】 一个整数表示答案。 【输入样例】 【输出样例】 pre></=></pre></=></pre></=></pre></=></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    <div>         
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 50px">-------------本文结束<i class="fa fa-heart"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/蓝桥杯备考-第八届JavaB组省赛题解/" rel="next" title="蓝桥杯备考-第八届JavaB组省赛题解">
+                <i class="fa fa-chevron-left"></i> 蓝桥杯备考-第八届JavaB组省赛题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/21/蓝桥杯备考-第六届JavaB组省赛题解/" rel="prev" title="蓝桥杯备考-第六届JavaB组省赛题解">
+                蓝桥杯备考-第六届JavaB组省赛题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="叉叉儿">
+            
+              <p class="site-author-name" itemprop="name">叉叉儿</p>
+              <p class="site-description motion-element" itemprop="description">life is short, just code.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Chacha-Z" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2513261164?is_all=1" target="_blank" title="weibo"><i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第几天"><span class="nav-number">1.</span> <span class="nav-text">第几天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方格计数"><span class="nav-number">2.</span> <span class="nav-text">方格计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复数幂（未实现快速幂）"><span class="nav-number">3.</span> <span class="nav-text">复数幂（未实现快速幂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速幂"><span class="nav-number">3.1.</span> <span class="nav-text">快速幂</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试次数（错误）（已解决）"><span class="nav-number">4.</span> <span class="nav-text">测试次数（错误）（已解决）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摔鸡蛋问题"><span class="nav-number">4.1.</span> <span class="nav-text">摔鸡蛋问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递增三元组"><span class="nav-number">6.</span> <span class="nav-text">递增三元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#螺旋折线"><span class="nav-number">7.</span> <span class="nav-text">螺旋折线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志统计（未解决）"><span class="nav-number">8.</span> <span class="nav-text">日志统计（未解决）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尺取法"><span class="nav-number">8.1.</span> <span class="nav-text">尺取法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全球变暖"><span class="nav-number">9.</span> <span class="nav-text">全球变暖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆的计数（未解决）"><span class="nav-number">10.</span> <span class="nav-text">堆的计数（未解决）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叉叉儿</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l1BYUI5CgFvKVP4L08YMw0Nt-gzGzoHsz',
+        appKey: '7OgxTQRfBpr1D4Eil5huaEE3',
+        placeholder: '您真的不要没有什么要对我BB的嘛 | ᐕ)୨ 夸我鸭！',
+        avatar:'hide',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz",
+                'X-LC-Key': "S1a0fTqoqjY3FzCG5w8lPFrM",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
