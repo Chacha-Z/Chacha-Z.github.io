@@ -80,5 +80,5 @@ theme: next-reloaded
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:Chacha-Z/Chacha-Z.github.io.git
+  repo: git@github.com:Chacha-Z/Chacha-Z.github.io.git  
   branch: master
