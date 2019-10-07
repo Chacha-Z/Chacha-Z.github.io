@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="title: AirVis: Visual Analytics of Air Pollution Propagationsource:  IEEE 2019: Geovisualizationauthors:  Zikun Deng, Di Weng, Jiahui Chen, Ren Liu, Zhibin Wang, Jie Bao, Yu Zheng, Yingcai Wusummarize">
+<meta name="keywords" content="pattern mining,air pollution propagation,graph visualization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[V]AirVis-Visual Analytics of Air Pollution Propagation">
+<meta property="og:url" content="http://Chacha-Z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/index.html">
+<meta property="og:site_name" content="Chacha_Z">
+<meta property="og:description" content="title: AirVis: Visual Analytics of Air Pollution Propagationsource:  IEEE 2019: Geovisualizationauthors:  Zikun Deng, Di Weng, Jiahui Chen, Ren Liu, Zhibin Wang, Jie Bao, Yu Zheng, Yingcai Wusummarize">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://chacha-z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/数据抽象过程.png">
+<meta property="og:image" content="http://chacha-z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/系统视图.png">
+<meta property="og:updated_time" content="2019-10-03T06:29:01.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[V]AirVis-Visual Analytics of Air Pollution Propagation">
+<meta name="twitter:description" content="title: AirVis: Visual Analytics of Air Pollution Propagationsource:  IEEE 2019: Geovisualizationauthors:  Zikun Deng, Di Weng, Jiahui Chen, Ren Liu, Zhibin Wang, Jie Bao, Yu Zheng, Yingcai Wusummarize">
+<meta name="twitter:image" content="http://chacha-z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/数据抽象过程.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chacha_Z" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://Chacha-Z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[V]AirVis-Visual Analytics of Air Pollution Propagation | Chacha_Z</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chacha_Z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">may you forever young.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Chacha-Z.github.io/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叉叉儿">
+      <meta itemprop="description" content="life is short, just code.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chacha_Z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[V]AirVis-Visual Analytics of Air Pollution Propagation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-24 11:05:03" itemprop="dateCreated datePublished" datetime="2019-09-24T11:05:03+08:00">2019-09-24</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/" class="leancloud_visitors" data-flag-title="[V]AirVis-Visual Analytics of Air Pollution Propagation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>title</strong>: AirVis: Visual Analytics of Air Pollution Propagation<br><strong>source</strong>:  IEEE 2019: Geovisualization<br><strong>authors</strong>:  Zikun Deng, Di Weng, Jiahui Chen, Ren Liu, Zhibin Wang, Jie Bao, Yu Zheng, Yingcai Wu<br><strong>summarize in 50 words</strong>:  层次化的空气污染传播模式可视化<br><a id="more"></a></p>
+<h3 id="读论文的目的："><a href="#读论文的目的：" class="headerlink" title="读论文的目的："></a>读论文的目的：</h3><p>现阶段阅读论文的目的还主要在于扩大自己的知识面、积累素材、学习论文写作</p>
+<h3 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h3><blockquote>
+<p>一个基于图形可视化的可视分析系统，用以帮助领域专家有效地捕捉和解释不确定的空气污染传播模式。</p>
+</blockquote>
+<h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h3><ul>
+<li>空气污染已经成为一个全球性的问题；减轻空气污染的一个很重要的前提就是要清楚空气污染在大空间范围内的传播，以使专家能够确定污染的来源和发展模式</li>
+<li>由于风的不确定因素，捕捉不确定污染传播过程极具挑战性；</li>
+<li>目前最先进的HYSPLIT方法旨在自动推测污染物在大气中的扩散和对一个区域的影响，但HYSPLIT没有考虑动态传播模式内在的不确定性以及多个城市之前复杂的区域级相互作用，且缺乏在大空间区域内以overview到detail的形式呈现传播过程的交互工具；</li>
+<li>模型驱动和数据驱动的空气污染分析，前者不能捕捉复杂的区域级相互作用、后者没有考虑多区域间传播的连续性，且二者都忽略了传播过程的不确定性，此外，只有很少的研究结合了交互式可视化。</li>
+</ul>
+<h3 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h3><blockquote>
+<p>第一遍阅读有比较多的地方没看懂，之后阅读明白，认为理解的关键在于：明白系统意图，是为了分析传播模式，以便专家做出决策，而不是实时的观看传播情况。如此就能明白作者在做什么：</p>
+</blockquote>
+<ul>
+<li>数据是非实时的、区域性的、长时间跨度的所有数据；</li>
+<li>数据从下到上的计算过程：<ul>
+<li>从数据中计算得到<strong>传输实例（transportation instance）</strong>；</li>
+<li>从传输实例根据连续性合成<strong>传播实例（propagation instance）</strong></li>
+<li>在众多的传播实例中采用FSM方法找到频繁发生（可以这样说？）的即为<strong>传播模式（propagation pattern）</strong></li>
+<li>使用MDL原则从众多的模式中抽取上下文无关的频繁拓扑结构<strong>motif</strong>(不是聚类，是对模式进行抽取，形成拓扑结构的motifs，1:n)</li>
+<li>对模式使用word2vec模型基于拓扑相似性聚类并使用t-SNE进行二维投影；</li>
+</ul>
+</li>
+<li>从用户使用角度理解即为反方向层次化（聚类框选-motif-pattern-inspect-instance）<br><img src="/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/数据抽象过程.png" alt="数据抽象过程"></li>
+</ul>
+<h3 id="可视化设计"><a href="#可视化设计" class="headerlink" title="可视化设计"></a>可视化设计</h3><ul>
+<li><strong>Motif</strong>:<br>  边使用梭形图元，梭形图元编码了概率分布的均值（透明度）和方差（宽度）（一个motif由多个patterns抽取而来），Motif的展示可根据这两者进行排序；<br>  （可选编码：使用热力图来编码边所对应的所有传播模式的该边传播概率）</li>
+<li><strong>Pattern gylphs</strong>:<br>  点代表区域，根据其地理空间的相对位置放置；<br>  传播模式上的区域和路径被高亮为橙色，其余为灰色；圆域边上的红色箭头指向传播的大致方向；<br>  鼠标悬停在上面会呈现鱼眼镜头效果；<br>  传播模式对应的多条传播实例的时间分布被描述为模式图外围的热力图，每一个热力小块代表一周，该周内该模式的传播实例越多颜色饱和度越高；<br>  为了避免误以为时间分布是一个圈，最上方热力图不连续。</li>
+<li><strong>Pattern praph</strong>:<br>  在地图上可视化一个传播模式的不确定传播过程；<br>  所有传输实例的每条路径有两个变量contribution和impact（百分数），在模式中两个变量的中位数被编码为红色和绿色的饼图；<br>  每一个地区以画在白色背景上的黄色实心圆表示，圆越大，对应区域污染物的浓度越高。</li>
+<li><strong>Projection view</strong>:<br>  模式的二维投影散点图，模式相似性越高投影后的距离越近，投影点的透明度代表对应模式所有区域污染物浓度的均值；</li>
+<li><strong>Instance visualization</strong>:<br>  选择一个传播模式，可查看其细节的传播实例；<br>  对应区域对应的所有传输实例以一对弦图的形式展现；<br>  每个区域以一段弧表示，随时间变化的污染物浓度以顺时针方向的柱形图高度和亮度编码，弦的宽度编码实例的impact；<br>  下方表格展示传输实例的原始数据；</li>
+</ul>
+<p><img src="/2019/09/24/V-AirVis-Visual-Analytics-of-Air-Pollution-Propagation/系统视图.png" alt="系统视图"></p>
+<h3 id="阅读过程中的困惑（通过反复阅读解开）："><a href="#阅读过程中的困惑（通过反复阅读解开）：" class="headerlink" title="阅读过程中的困惑（通过反复阅读解开）："></a>阅读过程中的困惑（通过反复阅读解开）：</h3><ul>
+<li><strong>为什么说是graph visualization?</strong><br>  visualizing a large number of graphs（针对pattern而言）</li>
+<li><strong>什么是uncertainty-aware visualization?</strong><br>  针对传输实例对应的传输概率，也即传输浓度。将传播概率可视化出来？详见motifs的可视化设计。</li>
+<li><strong>compact设计?</strong><br>  对应the scalability of pattern visualization，在一张图中不止展示传播路径，使用恰当的编码同时展示传播时间、概率等。</li>
+<li><strong>层次化视觉设计体现在?</strong><br>  ‘associating the abstract patterns with physical instances’</li>
+<li><strong>topology analysis?</strong><br>  对应motif设计</li>
+</ul>
+<h3 id="方法总结："><a href="#方法总结：" class="headerlink" title="方法总结："></a>方法总结：</h3><ul>
+<li><strong>FSM</strong>： is particularly effective in extracting frequent subgraphs that represent typical propagation patterns；从多个传播实例到一个传播模式。·</li>
+<li><strong>MDL</strong>：通过为相似数据元素创建总结展示来压缩数据（minimum description length (MDL) principle：compresses data by creating summary representations for similar data items）；为多个模式抽取拓扑抽象。</li>
+<li><strong>word2vec</strong>：词袋模型</li>
+<li><strong>t-SNE</strong>：二维投影方式</li>
+<li><strong>motif</strong>: 拓扑图元</li>
+</ul>
+<h3 id="启发："><a href="#启发：" class="headerlink" title="启发："></a>启发：</h3><ul>
+<li><p>在related work一节中体会到：<br>  参考文献的意义在这一节体现尤其明显，调查的方向和方法（关于其是什么、为什么、做了什么等）都要有相关的参考文献来佐证，比如在讲图像可视化的时候，提到了两个方向，并分别都有对应的文献引用（大于一篇）；又比如在讲动态图像可视化时，尽管是概括性的提到一句“使用多种方法来组织图形”，都会在括号里列出各种方法及其参考文献；又或者是类似于“PM2.5对人体和环境都有很大的伤害”这样的论述，都能找到相关的文献引用。（可见论文的编写需要有足够的阅读量和清晰的逻辑思维，所以一定要形成自己的总结和概括，一方面是方便回顾，而一方面是在于能够总结出来才是真正读懂了）</p>
+</li>
+<li><p>作者一直强调“模式”：<br>  其中一句很重要的解释的话为“ Compared with the individual propagation instance that maybe arandom and unrepresentative event,these patterns strongly indicate the latent pathways of pollution propagation. ”，即，模式可以用于不确定性数据的可视化，以概括和抽象的方法揭示事务潜在的规律。</p>
+</li>
+<li><p>从overview到detail的层次化数据可视化方式。</p>
+</li>
+<li><p>设计备选可视化方案。</p>
+</li>
+</ul>
+<h3 id="遗留问题："><a href="#遗留问题：" class="headerlink" title="遗留问题："></a>遗留问题：</h3><p>对相关工作里提到的模型驱动和数据驱动的理解还是很模糊，不知道他们具体是怎么个表现形式，能够怎么被使用，模型是什么模型、数据是什么数据，为什么为称作模型和数据驱动。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    <div>         
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 50px">-------------本文结束<i class="fa fa-heart"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pattern-mining/" rel="tag"># pattern mining</a>
+          
+            <a href="/tags/air-pollution-propagation/" rel="tag"># air pollution propagation</a>
+          
+            <a href="/tags/graph-visualization/" rel="tag"># graph visualization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/23/地理信息可视化/" rel="next" title="《数据可视化》- 地理信息可视化">
+                <i class="fa fa-chevron-left"></i> 《数据可视化》- 地理信息可视化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/02/2019年9月/" rel="prev" title="2019年9月">
+                2019年9月 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="叉叉儿">
+            
+              <p class="site-author-name" itemprop="name">叉叉儿</p>
+              <p class="site-description motion-element" itemprop="description">life is short, just code.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Chacha-Z" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2513261164?is_all=1" target="_blank" title="weibo"><i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#读论文的目的："><span class="nav-number">1.</span> <span class="nav-text">读论文的目的：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHAT"><span class="nav-number">2.</span> <span class="nav-text">WHAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHY"><span class="nav-number">3.</span> <span class="nav-text">WHY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HOW"><span class="nav-number">4.</span> <span class="nav-text">HOW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化设计"><span class="nav-number">5.</span> <span class="nav-text">可视化设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阅读过程中的困惑（通过反复阅读解开）："><span class="nav-number">6.</span> <span class="nav-text">阅读过程中的困惑（通过反复阅读解开）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法总结："><span class="nav-number">7.</span> <span class="nav-text">方法总结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启发："><span class="nav-number">8.</span> <span class="nav-text">启发：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遗留问题："><span class="nav-number">9.</span> <span class="nav-text">遗留问题：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叉叉儿</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l1BYUI5CgFvKVP4L08YMw0Nt-gzGzoHsz',
+        appKey: '7OgxTQRfBpr1D4Eil5huaEE3',
+        placeholder: '您真的不要没有什么要对我BB的嘛 | ᐕ)୨ 夸我鸭！',
+        avatar:'hide',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz",
+                'X-LC-Key': "S1a0fTqoqjY3FzCG5w8lPFrM",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
