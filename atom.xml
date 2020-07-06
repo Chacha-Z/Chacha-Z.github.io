@@ -68,29 +68,6 @@
   </entry>
   
   <entry>
-    <title>那一天我二十二岁</title>
-    <link href="http://Chacha-Z.github.io/2019/10/07/%E9%82%A3%E4%B8%80%E5%A4%A9%E6%88%91%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%B2%81/"/>
-    <id>http://Chacha-Z.github.io/2019/10/07/那一天我二十二岁/</id>
-    <published>2019-10-06T23:53:52.000Z</published>
-    <updated>2019-10-07T00:50:11.836Z</updated>
-    
-    <content type="html"><![CDATA[<p style="font-size: 0.95em"><br>如果按我爸说的我可能大概也许差不多快到22：00的时候出生的<br>我现在二十二岁零九个小时五十七分钟<br><br>吼着过生日好麻烦的我<br>也会期盼来自朋友的生日快乐<br>会在收到礼物的时候欢喜<br>会为大段大段的文字感动<br>哈哈哈看来人是真的老了<br><br>我收到了两封信<br>一封来自遥远北方的马大倩<br>我的同桌 大学四年几乎没有再见面 就这样相互送了对方四年的礼物<br>一封来自大二的学妹<br>很惭愧她始终温柔待我 惭愧在于我甚至很少分出精力回她的消息 而我就这样成为她的太阳<br>我这一年来周身的刺不知道什么时候变得锋利<br>我开始思索她们信里我的温柔 其实是她们的温柔啊<br>让我想努力真正成为她们信里写的那个人<br>总之 一万个感谢<br>我也很高兴认识你们!<br><br>过去的二十一岁<br>我有每天六点起床十点半回寝室的日子<br>我有四处奔波下一秒就要睡着的日子<br>我有硬撑到凌晨准备第二天面试的日子<br>我努力过<br>我很幸运 我收获了<br>拿到了喜欢的学校的offer 恰好找到了自己喜欢的方向<br>不管在别人看来是可惜也好 是遗憾也好<br>我终于有一次有勇气说这是我喜欢的 这是我自己选的<br>以后 希望能对得起自己的选择 能不辜负<br><br>但是 我回过头来<br>二十一岁 我想爱想吃 还想在一瞬间变成天上半明半暗的云<br>我一样都没做到<br>我没有勇敢的去爱<br>二十岁的那个男孩子阴差阳错的成了我的朋友圈朋友<br>在他毕业的时候送给我他的吉他 在昨天祝我生日快乐<br>可我毕竟是没有勇敢过 而现在我已完全放下 只剩唏嘘<br>我也没有足够真诚的对我的朋友们<br>没有分出精力陪她们 没有真诚的为她们祝福<br>我也没有为能让我在一瞬间变成山间云朵的事情努力<br><br>我会在上一年许愿要做自己<br>这一年我希望自己温柔 真诚 勇敢<br><br>最后 停止感伤<br>ball ball自己不要再懒散下去了<br>继续往前走吧<br>专注 真诚的往前走<br><br>最后的最后 我爱我的妈妈我的家人<br>愿她们健康 快乐<br></p>]]></content>
-    
-    <summary type="html">
-    
-      我的二十一岁，我没有好好地去爱，也没有用力地变成天上半明半暗的云。
-    
-    </summary>
-    
-    
-      <category term="ALLME" scheme="http://Chacha-Z.github.io/categories/ALLME/"/>
-    
-    
-      <category term="lifeBB" scheme="http://Chacha-Z.github.io/tags/lifeBB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo d 出错</title>
     <link href="http://Chacha-Z.github.io/2019/10/03/hexo-d-%E5%87%BA%E9%94%99/"/>
     <id>http://Chacha-Z.github.io/2019/10/03/hexo-d-出错/</id>
@@ -502,6 +479,31 @@ at Pipe._handle.close (net.js:606:12)
     
     
       <category term="DynamicProblem" scheme="http://Chacha-Z.github.io/tags/DynamicProblem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LIS问题</title>
+    <link href="http://Chacha-Z.github.io/2019/03/10/LIS%E9%97%AE%E9%A2%98/"/>
+    <id>http://Chacha-Z.github.io/2019/03/10/LIS问题/</id>
+    <published>2019-03-10T07:27:35.000Z</published>
+    <updated>2019-03-11T02:02:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="LIS问题"><a href="#LIS问题" class="headerlink" title="LIS问题"></a>LIS问题</h3><pre><code>有一个长为n的数列a0, a1, ......, a(n-1)。请求出这个序列中最长的上升子序列的长度。上升子序列指的是对于任意的i&lt; j都满足ai &lt; aj的子序列</code></pre><h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><pre><code>序列为（1，5 ，2，6，9，10，3，15），那么它的最长上升子序列为：（1，2，6，9，10，15）</code></pre><h3 id="O-N-2"><a href="#O-N-2" class="headerlink" title="O(N^2)"></a>O(N^2)</h3><h4 id="思路：DP"><a href="#思路：DP" class="headerlink" title="思路：DP"></a>思路：DP</h4><pre><code>dp[i] = max(1, dp[j]+1) 其中：i &gt; j &amp;&amp; ai &gt; aj</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lis</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = Integer.MIN_VALUE;</span><br><span class="line">    <span class="keyword">int</span>[] maxSub = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;  i&lt; a.length; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> curMaxSub = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt; a[j] &amp;&amp; curMaxSub &lt; maxSub[j]+<span class="number">1</span>)&#123;</span><br><span class="line">                curMaxSub = maxSub[j]+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxSub[i] = curMaxSub;</span><br><span class="line">        <span class="keyword">if</span>(maxSub[i] &gt; max)&#123;</span><br><span class="line">            max = maxSub[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="O-nlogn"><a href="#O-nlogn" class="headerlink" title="O(nlogn)"></a>O(nlogn)</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ul><li>标记路径；</li><li>贪心算法：使序列整体尽可能的小，以便加入更多的元素;<br>  实现方式：维护一个标志路径数组，遍历原数组。如果当前元素大于标志数组中的最后一个，则加入标志数组后面；否则使用当前元素替换标志数组中，第一个大于当前元素的元素;<br>  例如：{5, 3, 1, 2, 4, 7, 8, 6}的标志路径为{1, 2， 4， 6， 8}；但这<strong>并不一定等于最长上升子序列</strong>，实际的最长上升子序列应该是{1, 2, 4, 7, 8}, 该贪心算法仅仅是所求的的长度相同（为什么长度就一定相同？）</li><li>BUT：得到的序列是一个伪序列，里面的元素，并不是真正的最长上升子序列，而仅仅和最长上升子序列的个数一样。</li><li>时间复杂度：因为查找的时候用的二分查找，所以时间复杂度为o（nlogn）</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getLis</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    dp[len++] = a[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i] &gt; dp[len-<span class="number">1</span>])&#123;</span><br><span class="line">            dp[len++] = a[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> replaceIndex = getIndex(dp, len, a[i]);</span><br><span class="line">            dp[replaceIndex] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(Arrays.toString(dp));</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getIndex</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[mid] &gt; x)&#123;</span><br><span class="line">            high = mid-<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(arr[mid] &lt; x)&#123;</span><br><span class="line">            low = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      动态规划；O(n^2)和O(nlogn)
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://Chacha-Z.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="DynamicProblem" scheme="http://Chacha-Z.github.io/tags/DynamicProblem/"/>
+    
+      <category term="GreedyAlgorithm" scheme="http://Chacha-Z.github.io/tags/GreedyAlgorithm/"/>
     
   </entry>
   
