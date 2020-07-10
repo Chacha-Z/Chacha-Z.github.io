@@ -9,15 +9,11 @@ tags:
 comments: true
 ---
 
-# 思路
-
-
-# 距离公式
-
-# 代码
-
 # 函数总结
+<!--more-->
+
 **shape：numpy函数**
+
 - shape(eye(3)) -> (3, 3)
 - shape([1,2,3,4])  -> (4,) 
 - shape(7) -> ()
