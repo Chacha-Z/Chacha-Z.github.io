@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="智能大数据可视化实验室  part1 可视化设计1.1 可视化过程模型    什么是好的可视化   HOW  1.2 可视化的设计原则  信  眼见不一定为实      how1 谎言因子0.95-1.95    例   how2保证可视化的展示是在上下文环境中的，而不是一个独立的    how3 只展示数据的变化而不是设计的变化  达 数据墨水概念： ​     最大化墨水占比： ​    擦除">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chacha_Z">
+<meta property="og:url" content="http://Chacha-Z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/index.html">
+<meta property="og:site_name" content="Chacha_Z">
+<meta property="og:description" content="智能大数据可视化实验室  part1 可视化设计1.1 可视化过程模型    什么是好的可视化   HOW  1.2 可视化的设计原则  信  眼见不一定为实      how1 谎言因子0.95-1.95    例   how2保证可视化的展示是在上下文环境中的，而不是一个独立的    how3 只展示数据的变化而不是设计的变化  达 数据墨水概念： ​     最大化墨水占比： ​    擦除">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095604047.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095715281.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095739306.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095801914.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095824904.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095900198.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095925147.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100022104.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100043301.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100121908.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100151208.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100238552.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100413818.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100521330.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100556113.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100639229.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100906662.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101003481.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101053673.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101107210.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101155616.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101258313.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101408243.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101438429.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101658261.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101732328.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101803012.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101841447.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101907120.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102008659.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102156643.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102404501.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102537203.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102645510.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102720979.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102842705.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102946970.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103018214.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103207362.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103324528.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103430926.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103324528.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103430926.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103453309.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103504958.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103548989.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103715625.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103747328.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103812647.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103842228.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105533887.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105652579.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105717212.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105741145.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105801060.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105823847.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105847816.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110009438.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110107036.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110121641.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110210150.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110301555.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110311313.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110326216.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110359552.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110455080.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110615325.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110653415.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110717827.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110815170.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111028732.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111053579.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111220414.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111246465.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111302580.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111317307.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111401956.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111445136.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111514224.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111613834.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111748378.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111850368.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111955919.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112111533.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112323988.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112350930.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112422906.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112542156.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112642110.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112741434.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112751658.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112807901.png">
+<meta property="og:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708113320959.png">
+<meta property="og:updated_time" content="2020-07-08T04:44:35.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chacha_Z">
+<meta name="twitter:description" content="智能大数据可视化实验室  part1 可视化设计1.1 可视化过程模型    什么是好的可视化   HOW  1.2 可视化的设计原则  信  眼见不一定为实      how1 谎言因子0.95-1.95    例   how2保证可视化的展示是在上下文环境中的，而不是一个独立的    how3 只展示数据的变化而不是设计的变化  达 数据墨水概念： ​     最大化墨水占比： ​    擦除">
+<meta name="twitter:image" content="http://chacha-z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095604047.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chacha_Z" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://Chacha-Z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | Chacha_Z</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chacha_Z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">may you forever young.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Chacha-Z.github.io/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叉叉儿">
+      <meta itemprop="description" content="life is short, just code.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chacha_Z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-10 08:37:33" itemprop="dateCreated datePublished" datetime="2020-07-10T08:37:33+08:00">2020-07-10</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>智能大数据可视化实验室</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095604047.png" alt="image-20200708095604047" style="zoom: 33%;"></p>
+<h1 id="part1-可视化设计"><a href="#part1-可视化设计" class="headerlink" title="part1 可视化设计"></a>part1 可视化设计</h1><h2 id="1-1-可视化过程模型"><a href="#1-1-可视化过程模型" class="headerlink" title="1.1 可视化过程模型"></a>1.1 可视化过程模型</h2><p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095715281.png" alt="image-20200708095715281" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095739306.png" alt="image-20200708095739306" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095801914.png" alt="image-20200708095801914" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095824904.png" alt="image-20200708095824904" style="zoom:25%;"></p>
+<p><strong>什么是好的可视化</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095900198.png" alt="image-20200708095900198" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708095925147.png" alt="image-20200708095925147" style="zoom:25%;"></p>
+<p><strong>HOW</strong> </p>
+<h3 id="1-2-可视化的设计原则"><a href="#1-2-可视化的设计原则" class="headerlink" title="1.2 可视化的设计原则"></a>1.2 可视化的设计原则</h3><p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100022104.png" alt="image-20200708100022104" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100043301.png" alt="image-20200708100043301" style="zoom:25%;"></p>
+<p><strong>信</strong></p>
+<ul>
+<li><p>眼见不一定为实</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100121908.png" alt="image-20200708100121908" style="zoom:25%;"></p>
+</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100151208.png" alt="image-20200708100151208" style="zoom:25%;"></p>
+<ul>
+<li><p>how1</p>
+<p>谎言因子0.95-1.95</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100238552.png" alt="image-20200708100238552" style="zoom: 25%;"></p>
+</li>
+</ul>
+<p>例</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100413818.png" alt="image-20200708100413818" style="zoom:25%;"></p>
+<ul>
+<li>how2<br>保证可视化的展示是在上下文环境中的，而不是一个独立的</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100521330.png" alt="image-20200708100521330" style="zoom:25%;"></p>
+<ul>
+<li><p>how3</p>
+<p>只展示数据的变化而不是设计的变化</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100556113.png" alt="image-20200708100556113" style="zoom:25%;"></p>
+<p><strong>达</strong></p>
+<p><strong>数据墨水概念</strong>：</p>
+<p>​    <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100639229.png" alt="image-20200708100639229" style="zoom:25%;"></p>
+<p>最大化墨水占比：</p>
+<p>​    擦除non-data-ink / redundant data ink</p>
+<p>​    <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708100906662.png" alt="image-20200708100906662" style="zoom:25%;"></p>
+</li>
+</ul>
+<p>利用<strong>人类认知系统</strong>，让用户更快感知可视化</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101003481.png" alt="image-20200708101003481" style="zoom:25%;"></p>
+<p>减少三个步骤的时耗</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101053673.png" alt="image-20200708101053673" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101107210.png" alt="image-20200708101107210" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101155616.png" alt="image-20200708101155616" style="zoom:25%;"></p>
+<p><strong>雅</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101258313.png" alt="image-20200708101258313" style="zoom:25%;"></p>
+<h1 id="part2-视觉编码"><a href="#part2-视觉编码" class="headerlink" title="part2 视觉编码"></a>part2 视觉编码</h1><p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101408243.png" alt="image-20200708101408243" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101438429.png" alt="image-20200708101438429" style="zoom:25%;"></p>
+<h2 id="2-1-data-dataset-types-and-attributes"><a href="#2-1-data-dataset-types-and-attributes" class="headerlink" title="2.1 data/dataset types and attributes"></a>2.1 data/dataset types and attributes</h2><p><strong>数据</strong></p>
+<ul>
+<li>数据类型</li>
+</ul>
+<p>item: identity</p>
+<p>attributes：属性，工资、价值、销量</p>
+<p>links：连接，图</p>
+<p>position：空间数据，二维、三维，坐标、经纬度</p>
+<p>grids：单元之间的几何和拓扑关系，对连续的的数据进行采用的..</p>
+<ul>
+<li><p>数据集</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101658261.png" alt="image-20200708101658261" style="zoom:25%;"></p>
+</li>
+<li><p>数据集可获得性</p>
+</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101732328.png" alt="image-20200708101732328" style="zoom: 50%;"></p>
+<p><strong>属性类型</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101803012.png" alt="image-20200708101803012" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101841447.png" alt="image-20200708101841447" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708101907120.png" alt="image-20200708101907120" style="zoom:25%;"></p>
+<p><strong>数据类型为什么重要？</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102008659.png" alt="image-20200708102008659" style="zoom:25%;"></p>
+<ul>
+<li>影响数据编码的选择</li>
+<li>不同的数据类型通常对应不同的任务类型</li>
+<li>可视化设计空间是巨大的</li>
+</ul>
+<h2 id="2-2-mark-and-channels"><a href="#2-2-mark-and-channels" class="headerlink" title="2.2 mark and channels"></a>2.2 mark and channels</h2><p><strong>什么是标记</strong></p>
+<p>​    按维度分类，编码属性</p>
+<p><strong>什么是视觉通道</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102156643.png" alt="image-20200708102156643" style="zoom:25%;"></p>
+<p>颜色：定序、定量、分类</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102404501.png" alt="image-20200708102404501" style="zoom:25%;"></p>
+<p>标记决定可视化形式；通道决定可视化样式；</p>
+<p>举例：</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102537203.png" alt="image-20200708102537203" style="zoom:25%;"></p>
+<p><strong>视觉通道排名</strong></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102645510.png" alt="image-20200708102645510" style="zoom:25%;"></p>
+<p><strong>ranking 的提出</strong></p>
+<ul>
+<li>准确性</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102720979.png" alt="image-20200708102720979" style="zoom:25%;"></p>
+<ul>
+<li>可辩别性：</li>
+</ul>
+<p>​    区分不同属性值的编码</p>
+<p>​        </p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102842705.png" alt="image-20200708102842705" style="zoom:25%;"></p>
+<ul>
+<li>可分离性：视觉干扰</li>
+</ul>
+<p>​    </p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708102946970.png" alt="image-20200708102946970" style="zoom:25%;"></p>
+<ul>
+<li>视觉突出：一般来说只能在一个通道进行popout</li>
+</ul>
+<p>​    </p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103018214.png" alt="image-20200708103018214" style="zoom: 25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103207362.png" alt="image-20200708103207362" style="zoom:25%;"></p>
+<ul>
+<li>分组方式</li>
+</ul>
+<p>  <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103324528.png" alt="image-20200708103324528" style="zoom:25%;"></p>
+<p>  <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103430926.png" alt="image-20200708103430926" style="zoom:25%;"></p>
+<ul>
+<li><p>在小区域中使用颜色</p>
+<p>——hignlighting</p>
+</li>
+</ul>
+<p>  <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103324528.png" alt="image-20200708103324528" style="zoom:25%;"></p>
+<p>  <img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103430926.png" alt="image-20200708103430926" style="zoom:25%;"></p>
+<p> 做分类</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103453309.png" alt="image-20200708103453309" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103504958.png" alt="image-20200708103504958" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103548989.png" alt="image-20200708103548989" style="zoom:25%;"></p>
+<p>定量的颜色</p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103715625.png" alt="image-20200708103715625" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103747328.png" alt="image-20200708103747328" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103812647.png" alt="image-20200708103812647" style="zoom:25%;"></p>
+<h2 id="2-3-Statistical-Charts"><a href="#2-3-Statistical-Charts" class="headerlink" title="2.3 Statistical Charts"></a>2.3 Statistical Charts</h2><p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708103842228.png" alt="image-20200708103842228" style="zoom:25%;"></p>
+<ul>
+<li>折线图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105533887.png" alt="image-20200708105533887" style="zoom:25%;"></p>
+<blockquote>
+<p>宽高比/纵横比概念，最佳45度，调整的方法</p>
+</blockquote>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105652579.png" alt="image-20200708105652579" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105717212.png" alt="image-20200708105717212" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105741145.png" alt="image-20200708105741145" style="zoom:25%;"></p>
+<p>45度方法：</p>
+<p>​    </p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105801060.png" alt="image-20200708105801060" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105823847.png" alt="image-20200708105823847" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708105847816.png" alt="image-20200708105847816" style="zoom:25%;"></p>
+<ul>
+<li>sparkline</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110009438.png" alt="image-20200708110009438" style="zoom:25%;"></p>
+<blockquote>
+<p> 没有坐标轴，比较小，可以放在文字中进行表达</p>
+</blockquote>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110107036.png" alt="image-20200708110107036" style="zoom:25%;"></p>
+<ul>
+<li>柱形图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110121641.png" alt="image-20200708110121641" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110210150.png" alt="image-20200708110210150" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110301555.png" alt="image-20200708110301555" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110311313.png" alt="image-20200708110311313" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110326216.png" alt="image-20200708110326216" style="zoom:25%;"></p>
+<blockquote>
+<p> 不推荐三维柱状图</p>
+</blockquote>
+<ul>
+<li>堆叠柱图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110359552.png" alt="image-20200708110359552" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110455080.png" alt="image-20200708110455080" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110615325.png" alt="image-20200708110615325" style="zoom:25%;"></p>
+<ul>
+<li>饼图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110653415.png" alt="image-20200708110653415" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110717827.png" alt="image-20200708110717827" style="zoom:25%;"></p>
+<ul>
+<li>散点图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708110815170.png" alt="image-20200708110815170" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111028732.png" alt="image-20200708111028732" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111053579.png" alt="image-20200708111053579" style="zoom:25%;"></p>
+<ul>
+<li>须盒图</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111220414.png" alt="image-20200708111220414" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111246465.png" alt="image-20200708111246465" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111302580.png" alt="image-20200708111302580" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111317307.png" alt="image-20200708111317307" style="zoom:25%;"></p>
+<ul>
+<li>刻度</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111401956.png" alt="image-20200708111401956" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111445136.png" alt="image-20200708111445136" style="zoom: 25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111514224.png" alt="image-20200708111514224" style="zoom:25%;"></p>
+<ul>
+<li>工具</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111613834.png" alt="image-20200708111613834" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111748378.png" alt="image-20200708111748378" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111850368.png" alt="image-20200708111850368" style="zoom: 33%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708111955919.png" alt="image-20200708111955919" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112111533.png" alt="image-20200708112111533" style="zoom:25%;"></p>
+<h1 id="part3-可视化变化"><a href="#part3-可视化变化" class="headerlink" title="part3 可视化变化"></a>part3 可视化变化</h1><ul>
+<li>标准化</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112323988.png" alt="image-20200708112323988" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112350930.png" alt="image-20200708112350930" style="zoom:25%;"></p>
+<ul>
+<li>曲线拟合</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112422906.png" alt="image-20200708112422906" style="zoom:25%;"></p>
+<ul>
+<li>取样</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112542156.png" alt="image-20200708112542156" style="zoom:25%;"></p>
+<ul>
+<li>离散</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112642110.png" alt="image-20200708112642110" style="zoom:25%;"></p>
+<ul>
+<li>降维</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112741434.png" alt="image-20200708112741434" style="zoom:25%;"></p>
+<ul>
+<li>聚类</li>
+</ul>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112751658.png" alt="image-20200708112751658" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708112807901.png" alt="image-20200708112807901" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0708(上午)-可视化设计与编码(陈晴)/image-20200708113320959.png" alt="image-20200708113320959" style="zoom:25%;"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    <div>         
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 50px">-------------本文结束<i class="fa fa-heart"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/15/机器学习实战-KNN/" rel="next" title="机器学习实战-KNN">
+                <i class="fa fa-chevron-left"></i> 机器学习实战-KNN
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/10/0709(上午)-时间数据可视化(陈为)/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="叉叉儿">
+            
+              <p class="site-author-name" itemprop="name">叉叉儿</p>
+              <p class="site-description motion-element" itemprop="description">life is short, just code.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Chacha-Z" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2513261164?is_all=1" target="_blank" title="weibo"><i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#part1-可视化设计"><span class="nav-number">1.</span> <span class="nav-text">part1 可视化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-可视化过程模型"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 可视化过程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-可视化的设计原则"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.2 可视化的设计原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part2-视觉编码"><span class="nav-number">2.</span> <span class="nav-text">part2 视觉编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-data-dataset-types-and-attributes"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 data/dataset types and attributes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-mark-and-channels"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 mark and channels</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Statistical-Charts"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Statistical Charts</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part3-可视化变化"><span class="nav-number">3.</span> <span class="nav-text">part3 可视化变化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叉叉儿</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l1BYUI5CgFvKVP4L08YMw0Nt-gzGzoHsz',
+        appKey: '7OgxTQRfBpr1D4Eil5huaEE3',
+        placeholder: '您真的不要没有什么要对我BB的嘛 | ᐕ)୨ 夸我鸭！',
+        avatar:'hide',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz",
+                'X-LC-Key': "S1a0fTqoqjY3FzCG5w8lPFrM",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
