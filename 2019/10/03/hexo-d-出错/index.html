@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.  Please make sure you have the correct access rightsand the repository exists.FATAL Something’s wrong. Maybe you">
+  <meta name="description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo d 出错">
 <meta property="og:url" content="http://Chacha-Z.github.io/2019/10/03/hexo-d-出错/index.html">
 <meta property="og:site_name" content="Chacha_Z">
-<meta property="og:description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.  Please make sure you have the correct access rightsand the repository exists.FATAL Something’s wrong. Maybe you">
+<meta property="og:description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-07T01:06:52.237Z">
+<meta property="og:updated_time" content="2020-07-27T02:30:20.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo d 出错">
-<meta name="twitter:description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.  Please make sure you have the correct access rightsand the repository exists.FATAL Something’s wrong. Maybe you">
+<meta name="twitter:description" content="Connection reset by 13.229.188.59 port 22fatal: Could not read from remote repository.">
 
 
 
@@ -431,6 +431,7 @@
         <blockquote>
 <p>Connection reset by 13.229.188.59 port 22<br>fatal: Could not read from remote repository.</p>
 </blockquote>
+<a id="more"></a>
 <p>Please make sure you have the correct access rights<br>and the repository exists.<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">https://hexo.io/docs/troubleshooting.html</a><br>Error: Connection reset by 13.229.188.59 port 22<br>fatal: Could not read from remote repository.</p>
 <p>Please make sure you have the correct access rights<br>and the repository exists.</p>
 <pre><code>at ChildProcess.&lt;anonymous&gt; (D:\chacha-z.github.io\node_modules\hexo-util\lib\spawn.js:37:17)
@@ -440,8 +441,7 @@ at maybeClose (internal/child_process.js:982:16)
 at Socket.stream.socket.on (internal/child_process.js:389:11)
 at Socket.emit (events.js:198:13)
 at Pipe._handle.close (net.js:606:12)
-</code></pre><a id="more"></a>
-<p>在执行备份（备份失败）（git add .\git commit -m “…”\git push origin hexo）后出现此问题</p>
+</code></pre><p>在执行备份（备份失败）（git add .\git commit -m “…”\git push origin hexo）后出现此问题</p>
 <ol>
 <li>试过“确保 ssh 正常，hexo-deploy-git 插件正常的情况下删除. deploy_git 文件夹就好了”，前一两次成功，后来又挂了</li>
 <li>试过“在windows防火墙设置22端口”，没用</li>
