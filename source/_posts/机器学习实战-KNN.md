@@ -9,7 +9,8 @@ tags:
 comments: true
 ---
 
-# 函数总结
+函数总结
+
 <!--more-->
 
 **shape：numpy函数**

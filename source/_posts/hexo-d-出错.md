@@ -10,6 +10,8 @@ comments: true
 > Connection reset by 13.229.188.59 port 22
 fatal: Could not read from remote repository.
 
+<!--more-->
+
 Please make sure you have the correct access rights
 and the repository exists.
 FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
@@ -28,7 +30,7 @@ and the repository exists.
     at Pipe._handle.close (net.js:606:12)
 
 
-<!--more-->
+
 
 在执行备份（备份失败）（git add .\git commit -m "..."\git push origin hexo）后出现此问题
 
