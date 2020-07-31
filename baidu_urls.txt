@@ -6,5 +6,5 @@ https://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/
 https://chachaz.xyz/2020/07/09/0709(上午)-时间数据可视化(陈为)/
 https://chachaz.xyz/2020/07/08/0708(上午)-可视化设计与编码(陈晴)/
 https://chachaz.xyz/2020/07/07/0707(上午)-视觉与认知(巫英才) /
+https://chachaz.xyz/2020/07/06/React传递函数给组件/
 https://chachaz.xyz/2020/07/06/0706(上午)-数据可视化释义(屈华民)/
-https://chachaz.xyz/2019/10/15/机器学习实战-KNN/
