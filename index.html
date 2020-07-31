@@ -1776,28 +1776,14 @@
 
       
         
-          
-            <a id="more"></a>
-<p>目的：确保函数可以访问的组件属性，比如this.props/this.state</p>
-<p>1 构造函数中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">——</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-<p>2 class 属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Click happened'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-<p>3 render中绑定 </p>
-<p>使用 Function.prototype.bind 会在每次组件渲染时创建一个新的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">handleClick() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Click happened'</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> render() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick.bind(this)&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>4 箭头函数</p>
-<p>会在每次组件渲染时创建一个新的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.handleClick()&#125;&gt;Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
-<p>为什么要绑定：</p>
-<p> <img src="/2020/07/06/React传递函数给组件/image-20200731164508020.png" alt="image-20200731164508020"></p>
-<blockquote>
-<p>使用 React，通常只需要绑定<em>传递</em>给其他组件的方法。例如，<button onclick="{this.handleClick}"> 是在传递 this.handleClick ，所以需要绑定它。但是，没有必要绑定 render 方法或生命周期方法：我们并没有将它们传递给其他的组件。</button></p>
-</blockquote>
-<p>？？？？？？？？？？？？？</p>
-<p><a href="https://zh-hans.reactjs.org/docs/faq-functions.html#why-is-binding-necessary-at-all" target="_blank" rel="noopener">https://zh-hans.reactjs.org/docs/faq-functions.html#why-is-binding-necessary-at-all</a></p>
-
-          
+          <p>-</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/06/React传递函数给组件/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
