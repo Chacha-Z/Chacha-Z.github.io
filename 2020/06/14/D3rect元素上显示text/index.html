@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="-">
+  <meta name="description" content="不能直接使用rect包围text，否则设置无效">
 <meta name="keywords" content="D3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="D3在rect元素上显示text">
 <meta property="og:url" content="https://chachaz.xyz/2020/06/14/D3rect元素上显示text/index.html">
 <meta property="og:site_name" content="Chacha_Z">
-<meta property="og:description" content="-">
+<meta property="og:description" content="不能直接使用rect包围text，否则设置无效">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-31T08:50:47.838Z">
+<meta property="og:updated_time" content="2020-07-31T08:57:22.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="D3在rect元素上显示text">
-<meta name="twitter:description" content="-">
+<meta name="twitter:description" content="不能直接使用rect包围text，否则设置无效">
 
 
 
@@ -428,9 +428,8 @@
       
 
       
-        <p>-</p>
+        <p>不能直接使用rect包围text，否则设置无效</p>
 <a id="more"></a>
-<p>不能直接使用rect包围text，否则设置无效</p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 比较优雅的作法是，把rect标签和text标签用一个g标签包裹，并列在一起，并调节text标签的dy属性，使其居中</span><br><span class="line"><span class="tag">&lt;<span class="name">g</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rect</span>&gt;</span><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span> <span class="attr">dy</span>=<span class="string">'1em'</span>&gt;</span>text<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> legendtext = [&#123;<span class="attr">label</span>:<span class="string">'分数'</span>, <span class="attr">color</span>: colour(<span class="number">0</span>)&#125;, &#123;<span class="attr">label</span>:<span class="string">'平均分'</span>, <span class="attr">color</span>: colour(<span class="number">1</span>)&#125;, &#123;<span class="attr">label</span>:<span class="string">'最高/低分'</span>, <span class="attr">color</span>: <span class="string">'grey'</span>&#125;];</span><br><span class="line"><span class="comment">//添加颜色标签</span></span><br><span class="line"><span class="keyword">const</span> legend = $plot.append(<span class="string">'g'</span>)</span><br><span class="line">       .attr(<span class="string">'class'</span>, <span class="string">'line-legend'</span>)</span><br><span class="line">       .attr(<span class="string">"font-family"</span>, <span class="string">"sans-serif"</span>)</span><br><span class="line">       .attr(<span class="string">"font-size"</span>, <span class="number">10</span>)</span><br><span class="line">       .attr(<span class="string">'text-anchor'</span>, <span class="string">'end'</span>)</span><br><span class="line">       .selectAll(<span class="string">"g"</span>)</span><br><span class="line">       .data(legendtext)</span><br><span class="line">       .enter().append(<span class="string">"g"</span>)</span><br><span class="line">       .attr(<span class="string">"transform"</span>, (d, i) =&gt; <span class="string">`translate(<span class="subst">$&#123;w+<span class="number">15</span>&#125;</span>, <span class="subst">$&#123;i*<span class="number">20</span> +h<span class="regexp">/2&#125;)`);</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">legend.append('rect')</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">       .attr('width', 10)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">       .attr('height', 10)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">       .attr('opacity', .7)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">       .attr('fill', (d, i) =&gt; d.color)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">       .attr('rx', 2);</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">legend.append('text')</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .attr('x', 10)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .attr('dx', '0.325em')</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .attr('y', 10)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .attr('dy', '-0.2em')</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .attr('text-anchor', 'start')</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">      .text(d =&gt; d.label)</span></span></span></span><br></pre></td></tr></table></figure>
 
