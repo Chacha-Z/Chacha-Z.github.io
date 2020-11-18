@@ -252,29 +252,6 @@
   </entry>
   
   <entry>
-    <title>D3元素选择</title>
-    <link href="https://chachaz.xyz/2020/07/04/D3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9/"/>
-    <id>https://chachaz.xyz/2020/07/04/D3元素选择/</id>
-    <published>2020-07-04T01:14:23.000Z</published>
-    <updated>2020-07-31T08:56:29.027Z</updated>
-    
-    <content type="html"><![CDATA[<p>D3元素选择</p><a id="more"></a><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163759838.png" alt="image-20200731163759838"></p><p>以上，this指向mark元素</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163806765.png" alt="image-20200731163806765"></p><p>怎样获取父容器作为this？</p><p>react中，函数内this指向组件</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163813152.png" alt="image-20200731163813152"></p><p>D3获取的容器SVG元素是一个选择集：</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163821299.png" alt="image-20200731163821299"></p><p>D3element.node()，获取元素：</p><p>$plot.node()</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163700097.png" alt="image-20200731163700097"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;D3元素选择&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="D3" scheme="https://chachaz.xyz/categories/D3/"/>
-    
-    
-      <category term="D3" scheme="https://chachaz.xyz/tags/D3/"/>
-    
-  </entry>
-  
-  <entry>
     <title>前端自适应之获取父元素大小</title>
     <link href="https://chachaz.xyz/2020/07/04/%E8%87%AA%E9%80%82%E5%BA%94%E4%B9%8B%E8%8E%B7%E5%8F%96%E7%88%B6%E5%85%83%E7%B4%A0%E5%A4%A7%E5%B0%8F/"/>
     <id>https://chachaz.xyz/2020/07/04/自适应之获取父元素大小/</id>
@@ -294,6 +271,29 @@
     
     
       <category term="自适应" scheme="https://chachaz.xyz/tags/%E8%87%AA%E9%80%82%E5%BA%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>D3元素选择</title>
+    <link href="https://chachaz.xyz/2020/07/04/D3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9/"/>
+    <id>https://chachaz.xyz/2020/07/04/D3元素选择/</id>
+    <published>2020-07-04T01:14:23.000Z</published>
+    <updated>2020-07-31T08:56:29.027Z</updated>
+    
+    <content type="html"><![CDATA[<p>D3元素选择</p><a id="more"></a><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163759838.png" alt="image-20200731163759838"></p><p>以上，this指向mark元素</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163806765.png" alt="image-20200731163806765"></p><p>怎样获取父容器作为this？</p><p>react中，函数内this指向组件</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163813152.png" alt="image-20200731163813152"></p><p>D3获取的容器SVG元素是一个选择集：</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163821299.png" alt="image-20200731163821299"></p><p>D3element.node()，获取元素：</p><p>$plot.node()</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163700097.png" alt="image-20200731163700097"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;D3元素选择&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="D3" scheme="https://chachaz.xyz/categories/D3/"/>
+    
+    
+      <category term="D3" scheme="https://chachaz.xyz/tags/D3/"/>
     
   </entry>
   
