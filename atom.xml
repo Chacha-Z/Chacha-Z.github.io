@@ -275,17 +275,17 @@
   </entry>
   
   <entry>
-    <title>D3元素选择</title>
-    <link href="https://chachaz.xyz/2020/07/04/D3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9/"/>
-    <id>https://chachaz.xyz/2020/07/04/D3元素选择/</id>
+    <title>D3.js坐标轴数值格式</title>
+    <link href="https://chachaz.xyz/2020/07/04/D3.js%E5%9D%90%E6%A0%87%E8%BD%B4%E6%95%B0%E5%80%BC%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://chachaz.xyz/2020/07/04/D3.js坐标轴数值格式/</id>
     <published>2020-07-04T01:14:23.000Z</published>
-    <updated>2020-07-31T08:56:29.027Z</updated>
+    <updated>2020-07-31T08:56:45.390Z</updated>
     
-    <content type="html"><![CDATA[<p>D3元素选择</p><a id="more"></a><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163759838.png" alt="image-20200731163759838"></p><p>以上，this指向mark元素</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163806765.png" alt="image-20200731163806765"></p><p>怎样获取父容器作为this？</p><p>react中，函数内this指向组件</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163813152.png" alt="image-20200731163813152"></p><p>D3获取的容器SVG元素是一个选择集：</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163821299.png" alt="image-20200731163821299"></p><p>D3element.node()，获取元素：</p><p>$plot.node()</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163700097.png" alt="image-20200731163700097"></p>]]></content>
+    <content type="html"><![CDATA[<p>D3.js坐标轴数值格式</p><a id="more"></a><blockquote><p> <a href="https://www.qiutianaimeili.com/html/page/2020/04/20204226klm3p676el.html" target="_blank" rel="noopener">https://www.qiutianaimeili.com/html/page/2020/04/20204226klm3p676el.html</a></p></blockquote> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.tickFormat(d3.format(&apos;d&apos;))</span><br><span class="line"></span><br><span class="line">.tickFormat(d3.timeFormat(&apos;%d/%m&apos;))</span><br></pre></td></tr></table></figure><p>D3数值formatAPI：</p><p><a href="https://github.com/d3/d3-format/blob/v1.4.4/README.md#format" target="_blank" rel="noopener">https://github.com/d3/d3-format/blob/v1.4.4/README.md#format</a></p><p>步骤一：tickFormat用于坐标轴，设置坐标轴样式</p><p>步骤二：传入具体样式，日期format或数值format</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;D3元素选择&lt;/p&gt;
+      &lt;p&gt;D3.js坐标轴数值格式&lt;/p&gt;
     
     </summary>
     
@@ -298,17 +298,17 @@
   </entry>
   
   <entry>
-    <title>D3.js坐标轴数值格式</title>
-    <link href="https://chachaz.xyz/2020/07/04/D3.js%E5%9D%90%E6%A0%87%E8%BD%B4%E6%95%B0%E5%80%BC%E6%A0%BC%E5%BC%8F/"/>
-    <id>https://chachaz.xyz/2020/07/04/D3.js坐标轴数值格式/</id>
+    <title>D3元素选择</title>
+    <link href="https://chachaz.xyz/2020/07/04/D3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9/"/>
+    <id>https://chachaz.xyz/2020/07/04/D3元素选择/</id>
     <published>2020-07-04T01:14:23.000Z</published>
-    <updated>2020-07-31T08:56:45.390Z</updated>
+    <updated>2020-07-31T08:56:29.027Z</updated>
     
-    <content type="html"><![CDATA[<p>D3.js坐标轴数值格式</p><a id="more"></a><blockquote><p> <a href="https://www.qiutianaimeili.com/html/page/2020/04/20204226klm3p676el.html" target="_blank" rel="noopener">https://www.qiutianaimeili.com/html/page/2020/04/20204226klm3p676el.html</a></p></blockquote> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.tickFormat(d3.format(&apos;d&apos;))</span><br><span class="line"></span><br><span class="line">.tickFormat(d3.timeFormat(&apos;%d/%m&apos;))</span><br></pre></td></tr></table></figure><p>D3数值formatAPI：</p><p><a href="https://github.com/d3/d3-format/blob/v1.4.4/README.md#format" target="_blank" rel="noopener">https://github.com/d3/d3-format/blob/v1.4.4/README.md#format</a></p><p>步骤一：tickFormat用于坐标轴，设置坐标轴样式</p><p>步骤二：传入具体样式，日期format或数值format</p>]]></content>
+    <content type="html"><![CDATA[<p>D3元素选择</p><a id="more"></a><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163759838.png" alt="image-20200731163759838"></p><p>以上，this指向mark元素</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163806765.png" alt="image-20200731163806765"></p><p>怎样获取父容器作为this？</p><p>react中，函数内this指向组件</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163813152.png" alt="image-20200731163813152"></p><p>D3获取的容器SVG元素是一个选择集：</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163821299.png" alt="image-20200731163821299"></p><p>D3element.node()，获取元素：</p><p>$plot.node()</p><p><img src="/2020/07/04/D3元素选择/自适应之获取父元素大小 - 副本/image-20200731163700097.png" alt="image-20200731163700097"></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;D3.js坐标轴数值格式&lt;/p&gt;
+      &lt;p&gt;D3元素选择&lt;/p&gt;
     
     </summary>
     
