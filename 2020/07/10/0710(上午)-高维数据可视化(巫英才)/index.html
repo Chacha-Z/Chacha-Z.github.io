@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="高维数据可视化">
+<meta name="keywords" content="data visualization">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第五天-高维数据可视化（巫英才）">
+<meta property="og:url" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/index.html">
+<meta property="og:site_name" content="Chacha_Z">
+<meta property="og:description" content="高维数据可视化">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710142327280.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710152949383.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710145153787.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710145742671.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710150849767.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151053195.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151413028.png">
+<meta property="og:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151713588.png">
+<meta property="og:updated_time" content="2020-07-27T02:11:49.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第五天-高维数据可视化（巫英才）">
+<meta name="twitter:description" content="高维数据可视化">
+<meta name="twitter:image" content="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710142327280.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chacha_Z" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>第五天-高维数据可视化（巫英才） | Chacha_Z</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chacha_Z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">may you forever young.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chachaz.xyz/2020/07/10/0710(上午)-高维数据可视化(巫英才)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叉叉儿">
+      <meta itemprop="description" content="life is short, just code.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chacha_Z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第五天-高维数据可视化（巫英才）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-07-10 14:44:27" itemprop="dateCreated datePublished" datetime="2020-07-10T14:44:27+08:00">2020-07-10</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/" class="leancloud_visitors" data-flag-title="第五天-高维数据可视化（巫英才）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">高维数据可视化</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>课程：</strong> 高维数据可视化<br><strong>讲师：</strong> 巫英才<br><strong>讲师简介：</strong> 浙江大学计算机科学与技术学院CAD&amp;CG国家重点实验室百人计划研究员、博士生导师，目前担任浙江大学计算机科学与技术学院院长助理和CAD&amp;CG国家重点实验室主任助理，并担任中国图象图形学学会人机交互专委会副主任。主要研究方向是信息可视化、可视分析和人机交互，聚焦于城市大数据、体育大数据和社交媒体大数据的可视分析研究。<br><strong>课程简介：</strong> 本次课程主要介绍高维数据及其可视化方法，</p>
+<p><strong>课程大纲：</strong></p>
+<ul>
+<li>Data Dimension<ul>
+<li>1-D</li>
+<li>2-D</li>
+<li>3-D</li>
+<li>High Dimension</li>
+</ul>
+</li>
+<li>High-Dimensional Data Visualization<ul>
+<li>Dimensionality Reduction</li>
+<li>Scatter-plot Matrix</li>
+<li>Parallel Coordinates</li>
+<li>Glyph-based Methods</li>
+<li>‘Small Multiples’</li>
+<li>Interaction: ‘Dust &amp; Magnet’</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-数据维度"><a href="#1-数据维度" class="headerlink" title="1 数据维度"></a>1 数据维度</h4><h5 id="数据的维度"><a href="#数据的维度" class="headerlink" title="数据的维度"></a>数据的维度</h5><blockquote>
+<p>指数据的属性，也叫字段。</p>
+</blockquote>
+<ul>
+<li><p><strong>一维数据</strong>：对于只有一个属性的数据集使用直方图、折线图、饼图等基础图表即可简单呈现；</p>
+</li>
+<li><p><strong>二维数据</strong>：针对二维数据常采用二维空间散点图来表示，将各个属性值映射到不同的坐标轴，并确定个数据点在坐标轴中的位置；</p>
+</li>
+<li><p><strong>三维数据</strong>：可使用三维空间的散点图来可视化，但该方法读图效率低，给用户带来的误差较大。这是由于两个方面的原因，(1) 三维空间造成不同视角的数据分布模式不同；(2) 数据遮挡问题。因此，我们在进行三维数据的可视化时应该避免使用三维空间的散点图，不对抽象数据使用三维可视化，除非数据本身具有空间属性；</p>
+</li>
+<li><p><strong>高维多元数据</strong>：指每个数据对象有两个或两个以上独立或相关属性的数据。针对高维数据可视化的简单方法包括：<br><strong>（1）增加视觉通道</strong>：比如散点图增加颜色/形状/大小/颜色填充方式通道，但要注意根据数据类别和数据的分布范围选择合适的视觉通道，且该方法仅能支持若干属性，不适应超高维数据，注意视觉通道之间可能产生干扰，需要做一个权衡；</p>
+<p><strong>（2）多视图协调关联方法</strong>：增加视图的方式，协调关联指视图与视图之间非独立，首先是相同数据集，在交互上也有关联，从不同侧面观察数据。问题在于，太多视图会造成视觉混淆，降低分析效率，视图选择要慎重。</p>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710142327280.png" alt="image-20200710142327280" style="zoom:25%;"></p>
+</li>
+</ul>
+<h4 id="2-高维数据可视化方法"><a href="#2-高维数据可视化方法" class="headerlink" title="2 高维数据可视化方法"></a>2 高维数据可视化方法</h4><p>除了以上提到的简单的高维数据可视化方法，为了支持更高维的数据，我们引出其他更高级的高位数据可视化方法，可以分为以下三类：</p>
+<ul>
+<li>数据变化：<ul>
+<li>数据降维（Dimensional Reduction）</li>
+</ul>
+</li>
+<li>数据呈现：<ul>
+<li>散点图矩阵（Scatter-plot Matrix）</li>
+<li>平行坐标图（Parallel Coordinates）</li>
+<li>基于图标的方法（Glyph-based Methods）</li>
+<li>简化的多视图关联方法（’Small Multiples’）</li>
+</ul>
+</li>
+<li>数据交互：<ul>
+<li>dust + magnet</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据降维："><a href="#数据降维：" class="headerlink" title="数据降维："></a><strong>数据降维：</strong></h5><blockquote>
+<p>使用线性或非线性变换将高维数据投影到低维空间，并保持数据在高维空间中的特征的策略叫降维。</p>
+</blockquote>
+<p>代表性数据降维方法：</p>
+<ul>
+<li><strong>线性：</strong><ul>
+<li>主成分分析（Principal Component Analysis，PCA）</li>
+<li>MDS（Multidimensional Scaling，MDS）</li>
+</ul>
+</li>
+<li><strong>非线性：</strong><ul>
+<li>ISOMAP</li>
+<li>局部线性嵌入（Locally Linear Embedding，LLE）</li>
+</ul>
+</li>
+</ul>
+<p><strong>主成分分析（PCA）：</strong></p>
+<ul>
+<li><strong>动机1：</strong>二维变一维，减去均值，投影到所选方向的直线上。怎样选择投影方向：(1) 信息丢失最少；(2) 投影值尽可能分散，即投影后数据方差最大。</li>
+<li><strong>动机2：</strong>针对三维变二维，首先选择第一个方向，使投影后数据方差最大；然后选择第二个方向，如果按方差最大的方法，那么两个方向可能重合，即两个方向不是相互独立的。因此，可以继续两个方向的协方差，协方差为0表示两个方向相互独立，即第二个投影方向与第一个正交。</li>
+<li><strong>总结：</strong>PCA的两个关键约束约束条件，一是最大化方差，二是最小化投影方向协方差，其核心步骤是特征分解协方差矩阵。</li>
+<li><strong>存在的问题：</strong>不直观，没有实际的物理意义，给数据分析造成比较大的理解和优化障碍。</li>
+</ul>
+<p><strong>多尺度投影（MDS）：</strong>MDS方法比PCA适用性更广，因为其输入简单，只需原始数据集维度之间的相似度，不需要原始数据值，数据安全性和隐私性更高。如图所示为一个音乐可视化软件（MusicBox）的例子，将每首歌降维投影到二维平面，如果两个点相互靠的较近，则表明这两首音乐较相似。</p>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710152949383.png" alt="image-20200710152949383" style="zoom:25%;"></p>
+<h5 id="散点图矩阵"><a href="#散点图矩阵" class="headerlink" title="散点图矩阵"></a><strong>散点图矩阵</strong></h5><ul>
+<li><strong>散点图矩阵</strong>：散点图矩阵是散点图的扩展。对于N维的数据，采用N的2次方个散点图逐一表示N个属性之间的两两关系，这些散点图根据它们所表示的属性，沿横轴和纵轴按一定的顺序排列，从而组成一个N*N的矩阵，典型的散点图矩阵示例如图所示。</li>
+</ul>
+<ul>
+<li><strong>散点图矩阵的变种</strong>：可以替换对角线使用直方图表示对应属性分布。</li>
+<li><strong>存在的问题</strong>：当维度较多时，散点图矩阵数量呈几何级数增长，难以发现其中规律或模式。有限展示重要性较高的散点图可以在一定程度上环节空间局限，目前已经有研究致力于自动化识别有价值的散点图，比如分类模式、相关模式，将其对应高亮展示。</li>
+</ul>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710145153787.png" alt="image-20200710145153787" style="zoom:25%;"></p>
+<h5 id="平行坐标轴："><a href="#平行坐标轴：" class="headerlink" title="平行坐标轴："></a><strong>平行坐标轴：</strong></h5><ul>
+<li><p><strong>平行坐标轴：</strong>采用相互平行的坐标轴，每个坐标轴对应一个数据属性。每个数据对象对应一条穿过所有坐标轴的折线。</p>
+</li>
+<li><p><strong>平行坐标轴的变种：</strong>球的大小表示类别数量，数据在整条轴上的分布。</p>
+</li>
+<li><p><strong>交互：</strong>选择、刷选、过滤等。</p>
+</li>
+<li><p><strong>存在的问题：</strong>当数据对象过多时，所有折线将相互遮挡造成视觉混淆，可以适当增加折线透明度以便查看数据分布趋势。</p>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710145742671.png" alt="image-20200710145742671" style="zoom:25%;"></p>
+</li>
+</ul>
+<h5 id="图标法："><a href="#图标法：" class="headerlink" title="图标法："></a><strong>图标法：</strong></h5><ul>
+<li>图标法：采用图标来表示单个数据对象，使用不同的视觉元素来表示不同的属性。</li>
+<li>常见的方法：<ul>
+<li>雷达图（star plots），平行坐标的极坐标版本；</li>
+<li>Chernoff Faces，使用模拟人脸的图标来表示数据对象，使用人脸的不同部位来编码不同的属性，示例如图所示；</li>
+<li>将图表嵌入文本的方式。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710150849767.png" alt="image-20200710150849767" style="zoom:25%;"></p>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151053195.png" alt="image-20200710151053195" style="zoom:25%;"></p>
+<h5 id="多视图关联简化版（small-multiples）：小图表法，将一系列相似的小图表同时展示以便比较。"><a href="#多视图关联简化版（small-multiples）：小图表法，将一系列相似的小图表同时展示以便比较。" class="headerlink" title="多视图关联简化版（small multiples）：小图表法，将一系列相似的小图表同时展示以便比较。"></a><strong>多视图关联简化版（small multiples）</strong>：小图表法，将一系列相似的小图表同时展示以便比较。</h5><p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151413028.png" alt="image-20200710151413028" style="zoom:25%;"></p>
+<h5 id="交互方法："><a href="#交互方法：" class="headerlink" title="交互方法："></a><strong>交互方法：</strong></h5><p>交互查看高维数据的方法之一是“Dust &amp; Magnet”，源于2005年的一篇信息可视化论文，如图所示，使用灰尘隐喻数据点，磁铁隐喻数据属性过滤器，通过拖拽的方式将与磁铁对应属性相关的数据点吸引过来，交互查看数据在各个属性上的分布情况。</p>
+<p><img src="/2020/07/10/0710(上午)-高维数据可视化(巫英才)/image-20200710151713588.png" alt="image-20200710151713588" style="zoom:25%;"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    <div>         
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 50px">-------------本文结束<i class="fa fa-heart"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/data-visualization/" rel="tag"># data visualization</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/09/0709(上午)-时间数据可视化(陈为)/" rel="next" title="第四天-时间数据可视化（陈为）">
+                <i class="fa fa-chevron-left"></i> 第四天-时间数据可视化（陈为）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/13/0713(上午)-空间与地理数据可视化(曾伟)/" rel="prev" title="第六天-空间与地理数据可视化（曾伟）">
+                第六天-空间与地理数据可视化（曾伟） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="叉叉儿">
+            
+              <p class="site-author-name" itemprop="name">叉叉儿</p>
+              <p class="site-description motion-element" itemprop="description">life is short, just code.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Chacha-Z" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数据维度"><span class="nav-number">1.</span> <span class="nav-text">1 数据维度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的维度"><span class="nav-number">1.1.</span> <span class="nav-text">数据的维度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高维数据可视化方法"><span class="nav-number">2.</span> <span class="nav-text">2 高维数据可视化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据降维："><span class="nav-number">2.1.</span> <span class="nav-text">数据降维：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#散点图矩阵"><span class="nav-number">2.2.</span> <span class="nav-text">散点图矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#平行坐标轴："><span class="nav-number">2.3.</span> <span class="nav-text">平行坐标轴：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图标法："><span class="nav-number">2.4.</span> <span class="nav-text">图标法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多视图关联简化版（small-multiples）：小图表法，将一系列相似的小图表同时展示以便比较。"><span class="nav-number">2.5.</span> <span class="nav-text">多视图关联简化版（small multiples）：小图表法，将一系列相似的小图表同时展示以便比较。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交互方法："><span class="nav-number">2.6.</span> <span class="nav-text">交互方法：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叉叉儿</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l1BYUI5CgFvKVP4L08YMw0Nt-gzGzoHsz',
+        appKey: '7OgxTQRfBpr1D4Eil5huaEE3',
+        placeholder: '嗨 | ᐕ)୨ ！',
+        avatar:'hide',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "Mq1FPfx8O2EbQBfJl3con7uN-gzGzoHsz",
+                'X-LC-Key': "S1a0fTqoqjY3FzCG5w8lPFrM",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
