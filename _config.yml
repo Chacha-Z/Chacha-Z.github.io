@@ -12,16 +12,16 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://chachaz.xyz
+url: http://chachaz.xyz
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 
 baidu_url_submit:
-  count: 10                           # 提交最新的多少个链接
-  host: https://chachaz.xyz    # 在百度站长平台中添加的域名
-  token: ZvlayNEuRubgzXRI            	  # 秘钥
+  count: 100                          # 提交最新的多少个链接
+  host: https://chachaz.xyz                  # 在百度站长平台中添加的域名
+  token: code-SxS5cmPL3K            	# 秘钥
   path: baidu_urls.txt                # 文本文档的地址,新链接会保存在此文本文档里
 
 
@@ -35,6 +35,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - "zone/*"
+  - "about/*"
 
 # Writing
 new_post_name: :title.md # File name of new posts
