@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="1 npm 是什么、有什么用帮助安装和管理维护项目依赖，包括开源库、等 2 package.json 字段使用 npm init 或从仓库克隆下的项目文件一般都会存在一个 package.json 文件，用于描述包或项目的基本信息、依赖文件等信息 2.1 描述配置包括name、version、author、license、keyword、description、homepage、repositor">
+  <meta name="description" content="讨论 npm 是什么、怎么配置、版本控制、调试方法以及从 npm 到 yarn 到 pnpm 的区别">
 <meta name="keywords" content="工程化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="npm 详解">
-<meta property="og:url" content="http://chachaz.xyz/2023/04/19/npm 详解/index.html">
+<meta property="og:url" content="http://chachaz.xyz/2023/07/09/npm 详解/index.html">
 <meta property="og:site_name" content="Chacha_Z">
-<meta property="og:description" content="1 npm 是什么、有什么用帮助安装和管理维护项目依赖，包括开源库、等 2 package.json 字段使用 npm init 或从仓库克隆下的项目文件一般都会存在一个 package.json 文件，用于描述包或项目的基本信息、依赖文件等信息 2.1 描述配置包括name、version、author、license、keyword、description、homepage、repositor">
+<meta property="og:description" content="讨论 npm 是什么、怎么配置、版本控制、调试方法以及从 npm 到 yarn 到 pnpm 的区别">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-07-10T07:17:27.387Z">
+<meta property="og:updated_time" content="2023-07-10T07:41:10.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm 详解">
-<meta name="twitter:description" content="1 npm 是什么、有什么用帮助安装和管理维护项目依赖，包括开源库、等 2 package.json 字段使用 npm init 或从仓库克隆下的项目文件一般都会存在一个 package.json 文件，用于描述包或项目的基本信息、依赖文件等信息 2.1 描述配置包括name、version、author、license、keyword、description、homepage、repositor">
+<meta name="twitter:description" content="讨论 npm 是什么、怎么配置、版本控制、调试方法以及从 npm 到 yarn 到 pnpm 的区别">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://chachaz.xyz/2023/04/19/npm 详解/">
+  <link rel="canonical" href="http://chachaz.xyz/2023/07/09/npm 详解/">
 
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chachaz.xyz/2023/04/19/npm 详解/">
+    <link itemprop="mainEntityOfPage" href="http://chachaz.xyz/2023/07/09/npm 详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叉叉儿">
@@ -362,7 +362,7 @@
                 
               
 
-              <time title="Created: 2023-04-19 21:54:11" itemprop="dateCreated datePublished" datetime="2023-04-19T21:54:11+08:00">2023-04-19</time>
+              <time title="Created: 2023-07-09 21:54:11" itemprop="dateCreated datePublished" datetime="2023-07-09T21:54:11+08:00">2023-07-09</time>
             
 
             
@@ -395,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2023/04/19/npm 详解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2023/04/19/npm 详解/" itemprop="commentCount"></span>
+                <a href="/2023/07/09/npm 详解/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2023/07/09/npm 详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +404,7 @@
 
           
           
-             <span id="/2023/04/19/npm 详解/" class="leancloud_visitors" data-flag-title="npm 详解">
+             <span id="/2023/07/09/npm 详解/" class="leancloud_visitors" data-flag-title="npm 详解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -420,6 +420,8 @@
 
           
 
+          
+              <div class="post-description">讨论 npm 是什么、怎么配置、版本控制、调试方法以及从 npm 到 yarn 到 pnpm 的区别</div>
           
 
         </div>
@@ -823,8 +825,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/07/10/硬链接和软连接/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2023/07/09/硬链接和软连接/" rel="prev" title="软链接和硬链接">
+                软链接和硬链接 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -919,7 +921,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -936,7 +940,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

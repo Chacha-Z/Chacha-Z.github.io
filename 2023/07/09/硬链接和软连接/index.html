@@ -115,17 +115,18 @@
 
 
 
-  <meta name="description" content="1 背景储备：文件的存储原理inode：索引节点，记录文件的索引信息，包括文件的元信息  文件的字节数 文件拥有者的 User ID 文件的 Group ID 文件的读、写、执行权限 文件的时间戳，共有三个： ctime 指 inode上一次变动的时间 mtime 指文件内容上一次变动的时间 atime 指文件上一次打开的时间。   链接数，即有多少文件名指向这个 inode 文件数据 block">
+  <meta name="description" content="从修改、访问、删除等方面的差异讨论硬链接和软连接的区别，并举例二者的应用场景">
+<meta name="keywords" content="文件系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chacha_Z">
-<meta property="og:url" content="http://chachaz.xyz/2023/07/10/硬链接和软连接/index.html">
+<meta property="og:title" content="软链接和硬链接">
+<meta property="og:url" content="http://chachaz.xyz/2023/07/09/硬链接和软连接/index.html">
 <meta property="og:site_name" content="Chacha_Z">
-<meta property="og:description" content="1 背景储备：文件的存储原理inode：索引节点，记录文件的索引信息，包括文件的元信息  文件的字节数 文件拥有者的 User ID 文件的 Group ID 文件的读、写、执行权限 文件的时间戳，共有三个： ctime 指 inode上一次变动的时间 mtime 指文件内容上一次变动的时间 atime 指文件上一次打开的时间。   链接数，即有多少文件名指向这个 inode 文件数据 block">
+<meta property="og:description" content="从修改、访问、删除等方面的差异讨论硬链接和软连接的区别，并举例二者的应用场景">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-07-10T03:25:36.583Z">
+<meta property="og:updated_time" content="2023-07-10T07:41:07.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chacha_Z">
-<meta name="twitter:description" content="1 背景储备：文件的存储原理inode：索引节点，记录文件的索引信息，包括文件的元信息  文件的字节数 文件拥有者的 User ID 文件的 Group ID 文件的读、写、执行权限 文件的时间戳，共有三个： ctime 指 inode上一次变动的时间 mtime 指文件内容上一次变动的时间 atime 指文件上一次打开的时间。   链接数，即有多少文件名指向这个 inode 文件数据 block">
+<meta name="twitter:title" content="软链接和硬链接">
+<meta name="twitter:description" content="从修改、访问、删除等方面的差异讨论硬链接和软连接的区别，并举例二者的应用场景">
 
 
 
@@ -134,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://chachaz.xyz/2023/07/10/硬链接和软连接/">
+  <link rel="canonical" href="http://chachaz.xyz/2023/07/09/硬链接和软连接/">
 
 
 
@@ -144,7 +145,7 @@
   };
 </script>
 
-  <title> | Chacha_Z</title>
+  <title>软链接和硬链接 | Chacha_Z</title>
   
 
 
@@ -319,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chachaz.xyz/2023/07/10/硬链接和软连接/">
+    <link itemprop="mainEntityOfPage" href="http://chachaz.xyz/2023/07/09/硬链接和软连接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叉叉儿">
@@ -336,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">软链接和硬链接
               
             
           </h1>
@@ -361,12 +362,30 @@
                 
               
 
-              <time title="Created: 2023-07-10 15:34:17" itemprop="dateCreated datePublished" datetime="2023-07-10T15:34:17+08:00">2023-07-10</time>
+              <time title="Created: 2023-07-09 21:54:11" itemprop="dateCreated datePublished" datetime="2023-07-09T21:54:11+08:00">2023-07-09</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -376,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2023/07/10/硬链接和软连接/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2023/07/10/硬链接和软连接/" itemprop="commentCount"></span>
+                <a href="/2023/07/09/硬链接和软连接/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2023/07/09/硬链接和软连接/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -385,7 +404,7 @@
 
           
           
-             <span id="/2023/07/10/硬链接和软连接/" class="leancloud_visitors" data-flag-title>
+             <span id="/2023/07/09/硬链接和软连接/" class="leancloud_visitors" data-flag-title="软链接和硬链接">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,6 +420,8 @@
 
           
 
+          
+              <div class="post-description">从修改、访问、删除等方面的差异讨论硬链接和软连接的区别，并举例二者的应用场景</div>
           
 
         </div>
@@ -506,6 +527,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/文件系统/" rel="tag"># 文件系统</a>
+          
+        </div>
+      
 
       
       
@@ -515,7 +542,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2023/04/19/npm 详解/" rel="next" title="npm 详解">
+              <a href="/2023/07/09/npm 详解/" rel="next" title="npm 详解">
                 <i class="fa fa-chevron-left"></i> npm 详解
               </a>
             
@@ -617,7 +644,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -634,7 +663,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
