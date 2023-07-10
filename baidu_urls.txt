@@ -1,1 +1,3 @@
+http://chachaz.xyz/2023/07/10/硬链接和软连接/
+http://chachaz.xyz/2023/04/19/npm 详解/
 http://chachaz.xyz/2019/10/07/那一天我二十二岁/
