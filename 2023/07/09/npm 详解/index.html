@@ -123,10 +123,12 @@
 <meta property="og:site_name" content="Chacha_Z">
 <meta property="og:description" content="1 npm 是什么、有什么用帮助安装和管理维护项目依赖，如各类开源库等 2 package.json 字段使用 npm init 初始化 或从仓库克隆下的项目文件一般都会存在一个 package.json 文件，用于描述包或项目的基本信息、依赖文件等 2.1 描述配置包括name、version、author、license、keyword、description、homepage、reposit">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-07-11T02:34:05.532Z">
+<meta property="og:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/Pasted%20image%2020230505194814.png">
+<meta property="og:updated_time" content="2023-07-11T02:38:52.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm 详解">
 <meta name="twitter:description" content="1 npm 是什么、有什么用帮助安装和管理维护项目依赖，如各类开源库等 2 package.json 字段使用 npm init 初始化 或从仓库克隆下的项目文件一般都会存在一个 package.json 文件，用于描述包或项目的基本信息、依赖文件等 2.1 描述配置包括name、version、author、license、keyword、description、homepage、reposit">
+<meta name="twitter:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/Pasted%20image%2020230505194814.png">
 
 
 
@@ -766,7 +768,7 @@
 </ul>
 </li>
 <li><code>node_modules</code> 根目录文件为软连接，实际链接位置为<code>.pnpm/packName@version/node_modules/PackName</code>（呈上，非）</li>
-<li><code>.pnpm/packName@version/node_modules</code> 目录下，除 <code>packName</code> 文件为硬链接，其余依赖的依赖文件都是软连接</li>
+<li><code>.pnpm/packName@version/node_modules</code> 目录下，除 <code>packName</code> 文件为硬链接，其余依赖的依赖文件都是软连接<br><img src="/2023/07/09/npm 详解/Pasted image 20230505194814.png" alt="pnpm目录结构"></li>
 </ul>
 <p>参考资料：<br><a href="http://charming.run/2020/09/18/%E8%AF%91-Package-json%E9%80%9F%E6%9F%A5%E8%A1%A8/" target="_blank" rel="noopener">译-Package-json 速查表</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json" target="_blank" rel="noopener">官网：package.json</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json" target="_blank" rel="noopener">官网：package-lock.json</a><br><a href="https://cloud.tencent.com/developer/article/1819632" target="_blank" rel="noopener">我的 package-lock.json 被谁改了？</a><br><a href="https://docs.npmjs.com/cli/v8/commands/npm-audit" target="_blank" rel="noopener">npm audit 官网手册</a><br><a href="https://link.juejin.cn/?target=https%3A%2F%2Fes6.ruanyifeng.com%2F%23docs%2Fmodule-loader%23package-json-%25E7%259A%2584-exports-%25E5%25AD%2597%25E6%25AE%25B5" title="https://es6.ruanyifeng.com/#docs/module-loader#package-json-%E7%9A%84-exports-%E5%AD%97%E6%AE%B5" target="_blank" rel="noopener">阮一峰 Package.json 之 exports</a><br><a href="https://hirok.io/posts/avoid-npm-link" target="_blank" rel="noopener">四个避免使用 npm link 的理由</a></p>
 
@@ -813,8 +815,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/07/那一天我二十二岁/" rel="next" title="那一天我二十二岁">
-                <i class="fa fa-chevron-left"></i> 那一天我二十二岁
+              <a href="/2023/07/09/硬链接和软连接/" rel="next" title="软链接和硬链接">
+                <i class="fa fa-chevron-left"></i> 软链接和硬链接
               </a>
             
           </div>
@@ -822,10 +824,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/07/09/硬链接和软连接/" rel="prev" title="软链接和硬链接">
-                软链接和硬链接 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
