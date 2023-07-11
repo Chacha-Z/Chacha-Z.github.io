@@ -123,12 +123,12 @@
 <meta property="og:site_name" content="Chacha_Z">
 <meta property="og:description" content="介绍Npm是什么、怎么配置、如何进行版本控制、如何调试以及从 npm 到 yarn 到 pnpm 的进化进程">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/Pasted%20image%2020230505194814.png">
-<meta property="og:updated_time" content="2023-07-11T02:45:21.615Z">
+<meta property="og:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/images/npm%20stru.png">
+<meta property="og:updated_time" content="2023-07-11T02:54:52.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm 详解">
 <meta name="twitter:description" content="介绍Npm是什么、怎么配置、如何进行版本控制、如何调试以及从 npm 到 yarn 到 pnpm 的进化进程">
-<meta name="twitter:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/Pasted%20image%2020230505194814.png">
+<meta name="twitter:image" content="http://chachaz.xyz/2023/07/09/npm%20详解/images/npm%20stru.png">
 
 
 
@@ -770,7 +770,7 @@
 </ul>
 </li>
 <li><code>node_modules</code> 根目录文件为软连接，实际链接位置为<code>.pnpm/packName@version/node_modules/PackName</code>（呈上，非）</li>
-<li><code>.pnpm/packName@version/node_modules</code> 目录下，除 <code>packName</code> 文件为硬链接，其余依赖的依赖文件都是软连接<br><img src="/2023/07/09/npm 详解/Pasted image 20230505194814.png" alt="pnpm目录结构"></li>
+<li><code>.pnpm/packName@version/node_modules</code> 目录下，除 <code>packName</code> 文件为硬链接，其余依赖的依赖文件都是软连接<br><img src="/2023/07/09/npm 详解/images/npm%20stru.png" alt="pnpm目录结构"></li>
 </ul>
 <p>参考资料：<br><a href="http://charming.run/2020/09/18/%E8%AF%91-Package-json%E9%80%9F%E6%9F%A5%E8%A1%A8/" target="_blank" rel="noopener">译-Package-json 速查表</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json" target="_blank" rel="noopener">官网：package.json</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json" target="_blank" rel="noopener">官网：package-lock.json</a><br><a href="https://cloud.tencent.com/developer/article/1819632" target="_blank" rel="noopener">我的 package-lock.json 被谁改了？</a><br><a href="https://docs.npmjs.com/cli/v8/commands/npm-audit" target="_blank" rel="noopener">npm audit 官网手册</a><br><a href="https://link.juejin.cn/?target=https%3A%2F%2Fes6.ruanyifeng.com%2F%23docs%2Fmodule-loader%23package-json-%25E7%259A%2584-exports-%25E5%25AD%2597%25E6%25AE%25B5" title="https://es6.ruanyifeng.com/#docs/module-loader#package-json-%E7%9A%84-exports-%E5%AD%97%E6%AE%B5" target="_blank" rel="noopener">阮一峰 Package.json 之 exports</a><br><a href="https://hirok.io/posts/avoid-npm-link" target="_blank" rel="noopener">四个避免使用 npm link 的理由</a></p>
 
