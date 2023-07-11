@@ -625,14 +625,343 @@
 
       
         
-          讨论 npm 是什么、怎么配置、版本控制、调试方法以及从 npm 到 yarn 到 pnpm 的区别
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/07/09/npm 详解/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="1-npm-是什么、有什么用"><a href="#1-npm-是什么、有什么用" class="headerlink" title="1 npm 是什么、有什么用"></a>1 npm 是什么、有什么用</h1><p>帮助安装和管理维护项目依赖，如各类开源库等</p>
+<h1 id="2-package-json-字段"><a href="#2-package-json-字段" class="headerlink" title="2 package.json 字段"></a>2 package.json 字段</h1><p>使用 <code>npm init</code> 初始化 或从仓库克隆下的项目文件一般都会存在一个 <code>package.json</code> 文件，用于描述包或项目的基本信息、依赖文件等</p>
+<h2 id="2-1-描述配置"><a href="#2-1-描述配置" class="headerlink" title="2.1 描述配置"></a>2.1 描述配置</h2><p>包括<code>name、version、author、license、keyword、description、homepage、repository</code>等字段，各字段的意思就如其字面意思，不再赘述。其中，<code>homepage、repository</code>指明该 <code>npm</code> 包的仓库地址。</p>
+<h2 id="2-2-文件配置"><a href="#2-2-文件配置" class="headerlink" title="2.2 文件配置"></a>2.2 文件配置</h2><ol>
+<li><code>main</code>：指定入口文件，未指定时默认为根目录下的<code>index.js</code>文件<ul>
+<li>扩展：包发布原理 - 包发布时默认会包括 <code>package.json</code>，<code>license</code>，<code>README</code> 和 <code>main</code> 字段里指定的文件。</li>
+<li>扩展：包引用原理 - 引入库文件时，实质引入的就是对应的入口文件</li>
+</ul>
+</li>
+<li><code>module</code>：指定 <code>ES</code> 模块的入口文件</li>
+<li><code>browser</code>：指定只能在 <code>web</code> 端使用的入口文件（不能在 <code>server</code> 端使用）</li>
+<li><code>types</code> 或者 <code>typings</code>：指定 <code>typeScript</code> 类型定义的入口文件</li>
+</ol>
+<p><strong>Q：为什么会存在只能在<code>web</code>或<code>server</code>段使用的<code>npm</code>包？</strong></p>
+<ul>
+<li><code>npm</code>  包其实又分为： 只允许在客户端使用的， 只允许在服务端使用的，和浏览器/服务端都可以使用的包。因此，会有 <code>browser</code> 字段。<ul>
+<li>#todo 如何在<code>server</code>段使用<code>npm</code>包</li>
+</ul>
+</li>
+</ul>
+<p>**Q：同时定义了上述不同的入口文件时，webpack 会如何查找入口文件？</p>
+<ul>
+<li>根据环境和模块规范：如，<code>webpack</code> 中的 <code>target</code> 为 ”<code>web</code>“ 时，其 <code>resolve.mainFields</code> 字段默认为<code>[&#39;browser&#39;, &#39;module&#39;, &#39;main&#39;]</code>顺序</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	  <span class="comment">//...</span></span><br><span class="line">	  resolve: &#123;</span><br><span class="line">		mainFields: [<span class="string">'browser'</span>, <span class="string">'module'</span>, <span class="string">'main'</span>],</span><br><span class="line">	  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Q：三者的区别？</strong></p>
+<ul>
+<li><code>main</code> : 定义了 <code>npm</code> 包的入口文件，<code>browser</code> 环境和 <code>node</code> 环境均可使用；模块具体规范需结合 <code>type</code> 字段一起定义</li>
+<li><code>module</code> : 定义 <code>npm</code> 包的 <code>ESM</code> 规范的入口文件，<code>browser</code> 环境和 <code>node</code> 环境均可使用</li>
+<li><code>browser</code> : 定义 <code>npm</code> 包在 <code>browser</code> 环境下的入口文件</li>
+</ul>
+<ol start="5">
+<li><code>file</code>：指定更多需要跟入口文件一起发布的内容，可使用通配符、可为文件或文件夹</li>
+<li><code>type</code>：<code>&quot;type&quot;: &quot;module&quot;</code>，以支持 <code>es</code> 模块，否则要使用后缀名<code>.mjs</code>，想再使用 <code>commonJS</code>，后缀名定为<code>.cjs</code><br> #todo[[包规范：ES和CommonJS]]</li>
+</ol>
+<p><strong>Q：不同模块规范的文件的优先级？</strong></p>
+<ul>
+<li>根据 <code>type</code> 字段设置确定，<code>&quot;type&quot;: &quot;module&quot;</code>：当同时存在 <code>index.mjs</code> 和 <code>index.js</code> 时，<code>mjs</code> 的优先级大于 js #Q</li>
+</ul>
+<ol start="7">
+<li><code>exports</code>：自定义导出规则，可以理解为路径映射，用来定义子路径</li>
+</ol>
+<ul>
+<li>定义路径别名，缩短引用时包路径长度</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./node_modules/es-module-package/package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"exports"</span>: &#123;</span><br><span class="line">    <span class="string">"./submodule"</span>: <span class="string">"./src/submodule.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码指定<code>src/submodule.js</code>别名为<code>submodule</code>，然后就可以从别名加载这个文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> submodule <span class="keyword">from</span> <span class="string">'es-module-package/submodule'</span>;</span><br><span class="line"><span class="comment">// 加载 ./node_modules/es-module-package/src/submodule.js</span></span><br></pre></td></tr></table></figure>
+<p><code>exports</code>字段的别名如果是<code>.</code>，就代表模块的主入口，优先级高于<code>main</code>字段，并且可以直接简写成<code>exports</code>字段的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"exports"</span>: &#123;</span><br><span class="line">    <span class="string">"."</span>: <span class="string">"./main.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"exports"</span>: <span class="string">"./main.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>.</code> 指代主入口，且优先级高于 <code>main</code>；使用 <code>require</code> 和 <code>default</code> 为 ES6 模块和 <code>CommonJS</code> 模块指定不同入口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"type"</span>: <span class="string">"module"</span>,</span><br><span class="line">  <span class="string">"exports"</span>: &#123;</span><br><span class="line">    <span class="string">"."</span>: &#123;</span><br><span class="line">      <span class="string">"require"</span>: <span class="string">"./main.cjs"</span>,</span><br><span class="line">      <span class="string">"default"</span>: <span class="string">"./main.js"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可简写省略</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"exports"</span>: &#123;</span><br><span class="line">    <span class="string">"require"</span>: <span class="string">"./main.cjs"</span>,</span><br><span class="line">    <span class="string">"default"</span>: <span class="string">"./main.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 但如果同时还有其他别名，就不能采用简写，否则会报错。</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 报错</span></span><br><span class="line">  <span class="string">"exports"</span>: &#123;</span><br><span class="line">    <span class="string">"./feature"</span>: <span class="string">"./lib/feature.js"</span>,</span><br><span class="line">    <span class="string">"require"</span>: <span class="string">"./main.cjs"</span>,</span><br><span class="line">    <span class="string">"default"</span>: <span class="string">"./main.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>#todo workspace</li>
+</ol>
+<h2 id="2-3-脚本配置"><a href="#2-3-脚本配置" class="headerlink" title="2.3 脚本配置"></a>2.3 脚本配置</h2><h3 id="2-3-1-配置-npm-run-命令"><a href="#2-3-1-配置-npm-run-命令" class="headerlink" title="2.3.1 配置 npm run 命令"></a>2.3.1 配置 npm run 命令</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123; <span class="comment">// npm run build</span></span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"webpack"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Q：为什么不直接使用原命令？</strong></p>
+<ul>
+<li>因为命令未在环境变量中定义，如果直接使用会报命令找不到的错误</li>
+</ul>
+<p><strong>Q：为什么能找到配置的命令？</strong></p>
+<ul>
+<li>一般而言，<code>script</code> 中配置的命令，都是来自某一 <code>npm</code> 工具包的功能，在安装对应工具包时，就会对应安装工具包所提供的命令执行文件，这一安装流程与工具包中的 <code>Bin</code> 字段相关，具体见下一小节。</li>
+</ul>
+<h3 id="2-3-2-bin-字段"><a href="#2-3-2-bin-字段" class="headerlink" title="2.3.2 bin 字段"></a>2.3.2 bin 字段</h3><ul>
+<li>作用：用在工具性质的 <code>npm</code> 包中，对外暴露脚本命令，如 <code>create-react-app</code></li>
+<li>键值对：键-命令名称；值-命令执行脚本文件的路径</li>
+<li>原理：<ul>
+<li><code>npm install</code> 时，<code>npm</code> 会自动读取依赖包的 <code>Bin</code> 字段，并在项目的 <code>node_modules/bin</code> 下生成对应命令的执行脚本，执行脚本内部逻辑为：构造 <code>node</code> 命令，运行 <code>bin</code> 字段指定的 <code>js</code> 文件</li>
+<li>生成的执行脚本包括三类，根据系统环境的不同包括无后缀名（unix）、.ps（windows powershell）、.cmd（windows 命令行）</li>
+<li>执行 <code>npm run xxx</code> 的时候，就会到 <code>node_modules/bin</code> 中找对应的映射文件，然后再找到相应的 <code>js</code> 文件来执行。</li>
+<li>相应地，全局安装的 <code>npm</code> 工具包，因为配置了全局 <code>node_modules/bin</code> 的环境变量，因此可以在全局命令行中使用对应命令。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Q：为什么能找到 script 中配置的命令？</strong></p>
+<ul>
+<li><code>npm run</code> 会创建一个 <code>Shell</code>，执行指定的命令，并临时将 <code>node_modules/.bin</code> 加入 <code>PATH</code> 变量，这意味着本地模块可以直接运行。也因此 <code>scripts</code> 字段里面调用命令时不用加上路径，这就避免了全局安装 <code>NPM</code> 模块。</li>
+</ul>
+<h2 id="2-4-依赖配置"><a href="#2-4-依赖配置" class="headerlink" title="2.4 依赖配置"></a>2.4 依赖配置</h2><blockquote>
+<p>说明本项目或包文件依赖的三方包</p>
+</blockquote>
+<ul>
+<li><code>dependencies</code>：运行依赖，<code>npm install xxx (--save)</code></li>
+<li><code>devDependencies</code>：开发依赖，<code>npm install xxx --save-dev/ -D</code><ul>
+<li>开发依赖在项目打包时不会被打包</li>
+</ul>
+</li>
+<li><code>peerDependencies</code>：同伴依赖，常表示用于提醒与第三方包的依赖与兼容性关系。<ul>
+<li>比如安装 <code>A</code>，<code>A</code> 的正常使用依赖  <a href="mailto:`B@2.x" target="_blank" rel="noopener">`B@2.x</a><code>版本，那么</code><a href="mailto:B@2.x" target="_blank" rel="noopener">B@2.x</a><code>就应该被列在</code>A<code>的</code>peerDependencies` 下，表示“如果你使用我，那么你也需要安装 B，并且至少是 2.x 版本”。</li>
+<li><strong>Q：是否会被自动安装</strong>：在 <code>npm</code> 版本 3 到 6 中，<code>peerDependencies</code> 不会自动安装，如果在树中发现对等依赖项的无效版本，则会发出警告。从 <code>npm v7</code> 开始，默认安装 <code>peerDependencies</code>。</li>
+</ul>
+</li>
+<li><code>bundleDependencies</code>：打包依赖，包发布时会被一起打包<ul>
+<li>打包：<code>npm pack</code> 打包生成 <code>tgz</code> 压缩包，打包依赖会使压缩包中包含 <code>node_modules</code> 并包含打包依赖中的内容</li>
+<li>作用：普通依赖通常从 <code>npm registry</code> 安装，但当想用一个不在 <code>npm registry</code> 里的包或者一个被修改过的第三方包时，打包依赖会比普通依赖更好用</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"bundleDependencies"</span>: [</span><br><span class="line">  <span class="string">"react"</span>,</span><br><span class="line">  <span class="string">"react-dom"</span></span><br><span class="line">] <span class="comment">// 注意，包名称不包括任何版本，因为该信息在依赖项中指定</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>overrides</code>：重写项目<strong>依赖的依赖，及其依赖树下某个依赖</strong>的版本号，进行包的替换</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"overrides"</span>: &#123; <span class="comment">// 重写整个依赖书的foo</span></span><br><span class="line">  <span class="string">"foo"</span>: <span class="string">"1.1.0-patch"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">"overrides"</span>: &#123;</span><br><span class="line">  <span class="string">"A"</span>: &#123; <span class="comment">// 近重写某个依赖A的依赖包foo</span></span><br><span class="line">    <span class="string">"foo"</span>: <span class="string">"1.1.0-patch"</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果在 <code>yarn</code> 里也想复写依赖版本号，需要使用 <code>resolution</code> 字段，而在 <code>pnpm</code> 里复写版本号需要使用 <code>pnpm.overrides</code> 字段。</p>
+</blockquote>
+<h2 id="2-5-系统配置"><a href="#2-5-系统配置" class="headerlink" title="2.5 系统配置"></a>2.5 系统配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"engines"</span>: &#123; <span class="comment">// 规定环境内Node或包管理器的版本要求</span></span><br><span class="line">  <span class="string">"node"</span>: <span class="string">"&gt;=14 &lt;16"</span>,</span><br><span class="line">  <span class="string">"pnpm"</span>: <span class="string">"&gt;7"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"os"</span>: [<span class="string">"darwin"</span>, <span class="string">"linux"</span>] <span class="comment">// 指定项目兼容的操作系统</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"cpu"</span>: [<span class="string">"x64"</span>, <span class="string">"ia32"</span>] <span class="comment">// 指定项目兼容的CPU</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-6-第三方配置"><a href="#2-6-第三方配置" class="headerlink" title="2.6 第三方配置"></a>2.6 第三方配置</h2><ul>
+<li><code>unpkg</code> 或 <code>jsdelivr</code>： 都是 <code>CDN</code> 公共服务提供商，帮助加速 <code>Web</code> 常用的静态资源的加载<ul>
+<li>什么是 <code>CDN</code>：<code>CDN</code> 将文件部署在离用户更近的网络节点上，来减少网络交互耗时，加速文件传输。<code>CDN</code> 会通过<strong>负载均衡技术</strong>，将用户的请求定向到最合适的缓存服务器上去获取内容。<ul>
+<li>优势：<code>JS</code> 体积变小，使用 <code>CDN</code> 的第三方资源的 <code>JS</code> 代码，将不再打包到本地服务的 <code>JS</code> 包中；网页加载提速。</li>
+<li>劣势：请求变多；<code>CDN</code> 可能不稳定。</li>
+</ul>
+</li>
+<li>什么时候使用 <code>CDN</code>：<ul>
+<li><code>npm run build --report</code>：查看各个依赖包的大小，过大就转为 CND 获取；</li>
+<li>或者 <code>webpack-bundle-analyzer</code> 工具，分析依赖大小</li>
+</ul>
+</li>
+<li>实现步骤：<ul>
+<li>在 <code>index.html</code> 中引入 <code>CDN</code> 链接</li>
+<li>在 <code>config.js</code> 加入 <code>externals</code> 外部扩展：<code>webpack</code> 的 <code>externals</code> 字段，用于 <code>exclude</code> 将通过 <code>CDN</code> 加载的导入，目的是引用一个库但不让 <code>webpack</code> 打包</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Q：可以直接在 <code>HTTP</code> 里通过链接的形式访问 <code>CDN</code>，那为什么还需要unpkg这一字段？</strong></p>
+<ul>
+<li>一般是是通过  <a href="https://unpkg.com/jquery@3.3.1/dist/jquery.js" target="_blank" rel="noopener">https://unpkg.com/jquery@3.3.1/dist/jquery.js</a> <code>（unpkg.com/:package@:version/:file）</code>这样来访问<code>unpkg</code>的<code>cdn</code>文件的；而如果用户省略了版本号则默认会取 <code>latestVersion</code>；如果省略了 <code>dist/jquery.js</code> ，则会默认寻找 <code>package.json</code> 中的 <code>main</code> 字段指定的 <code>js</code>，如果指定了 <code>unpkg</code> 字段，则会返回 <code>unpkg</code> 字段指定的文件。</li>
+<li>#todo 作者未完全理解，谨慎学习</li>
+</ul>
+<p><strong>Q：CND 为什么能加快加载速度，不仍然需要网络请求去加载吗？</strong></p>
+<ul>
+<li><code>cdn</code> 会根据用户 <code>ip</code> 选择最近的节点来提供和返回数据，比从项目服务器请求资源更快</li>
+<li>如果有些插件没有在 <code>webpack</code> 里面拆包，有可能就会把插件打包进同一个文件，导致打包出来后文件变大，造成首屏加载压力。但用 <code>cdn</code> 来加载插件，并且设置 <code>defer</code> 异步加载，就不会给首屏那么大的压力</li>
+</ul>
+<h1 id="3-如何进行版本控制？package-lock-json-是什么？"><a href="#3-如何进行版本控制？package-lock-json-是什么？" class="headerlink" title="3 如何进行版本控制？package-lock.json 是什么？"></a>3 如何进行版本控制？package-lock.json 是什么？</h1><h2 id="3-1-版本号"><a href="#3-1-版本号" class="headerlink" title="3.1 版本号"></a>3.1 版本号</h2><p><strong>版本号规则</strong>：<code>semver</code> 规范「主版本.次版本.修改版本」</p>
+<ul>
+<li><code>补丁</code> 做了向下相容的問題修正</li>
+<li><code>次要版本</code> 做了向下相容的功能性新增</li>
+<li><code>主要版本</code> 做了不相容的 API 修改</li>
+</ul>
+<p><strong>通配符</strong>：</p>
+<ul>
+<li><code>~</code> 匹配最近的补丁版本，比如 ~1.2.3 会匹配所有 1.2.x 版本</li>
+<li><code>^</code> 匹配最新的次要版本，比如 ^1.2.3 会匹配所有 1.x.x 的包，包括 1.3.0，但是不包括 2.0.0</li>
+<li><code>*</code> 匹配最新版本的依赖包</li>
+</ul>
+<blockquote>
+<p>使用了版本通配符后，多人开发中就有可能存在大家依赖包版本不一致的情况，导致项目运行结果不一样，存在 bug 隐患</p>
+<p>那么，<strong>Q：如何确保大家安装的依赖包版本一致呢</strong> ：package-lock.json</p>
+</blockquote>
+<h2 id="3-2-保证安装一致性：package-lock-json"><a href="#3-2-保证安装一致性：package-lock-json" class="headerlink" title="3.2 保证安装一致性：package-lock.json"></a>3.2 保证安装一致性：package-lock.json</h2><blockquote>
+<p>准确描述当前项目<code>npm</code>包的依赖树结构及版本。后续安装会根据 <code>pacakge-lock.json</code> 来安装，保证依赖树相同，而不管中间依赖项如何更新。</p>
+</blockquote>
+<p><strong>如何创建</strong>：<code>npm install</code>  后自动生成，并在 <code>node_modules</code> 或 <code>package.json</code>  发生变化时自动更新。</p>
+<p>Q：<code>lock</code> 文件会固定安装的包版本，如果想更新版本怎么办？会发生什么？</p>
+<ul>
+<li>手动执行 <code>npm i A@1.1.0</code>，<code>package-lock.json</code> 会更新</li>
+<li>如果新版本的 <code>A</code> 的依赖已有新的匹配更新，则该子依赖在 <code>lock</code> 文件中也会更新<ul>
+<li>如果该子依赖同时也是项目依赖，且和 <code>A</code> 的子依赖匹配版本存在冲突，<code>lock</code> 文件会使用嵌套表示</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"lock-test"</span>,</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">    <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"A"</span>: &#123;</span><br><span class="line">            <span class="attr">"version"</span>: <span class="string">"1.1.0"</span>,</span><br><span class="line">            <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">                <span class="attr">"B"</span>: &#123; <span class="attr">"version"</span>: <span class="string">"1.1.0"</span> &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"B"</span>: &#123; <span class="attr">"version"</span>: <span class="string">"2.0.0"</span> &#125;,</span><br><span class="line">        <span class="attr">"C"</span>: &#123; <span class="attr">"version"</span>: <span class="string">"1.0.0"</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-如何根据-lock-文件进行安装"><a href="#3-3-如何根据-lock-文件进行安装" class="headerlink" title="3.3 如何根据 lock 文件进行安装"></a>3.3 如何根据 <code>lock</code> 文件进行安装</h2><blockquote>
+<p>当 <code>package.json</code> 和 <code>lock</code> 文件声明的版本不一致时的处理方式：根据 <code>NPM</code> 的版本不同，处理方式不同</p>
+</blockquote>
+<ol>
+<li><p><code>NPM v5.0.x</code>：忽略 <code>package</code> 的变化，只根据 <code>lock</code> 下载</p>
+</li>
+<li><p><code>NPM v5.1.0-v5.4.2</code>：当 <code>package</code> 有符合规范的更新版本时会忽略 <code>lock</code>，按照 <code>package</code> 安装完毕之后，更新 <code>lock</code></p>
+</li>
+<li><p><code>NPM v 5.4.2以上</code>：判定 <code>package</code> 声明版本和 <code>lock</code> 安装的版本是否兼容，即符合通配符的匹配规范</p>
+<ul>
+<li>兼容：根据 <code>lock</code> 安装</li>
+<li>不兼容：根据 <code>package</code> 安装，并更新 <code>lock file</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>如果 <code>package-lock.json</code> 和 <code>npm-shrinkwrap.json</code> 同时存在于项目的根目录中的时候, <code>package-lock.json</code> 将会被忽略。</p>
+<p><code>npm-shrinkwrap.json</code>：可发布的锁文件。与 <code>lock</code> 文件的区别：功能一致，但 <code>npm-shrinkwrap</code> 可能在发布包时包含。（也就是说我们一般不在发布时同时发布 <code>lock</code> 文件，<code>lock</code> 文件主要用在项目协作过程中提交到项目仓库）<br>使用场景：在注册表上通过发布过程部署的应用，如用作全局安装或 devDependencies 的守护进程和命令行工具。强烈建议库作者发布此文件，因为这会阻止最终用户控制传递依赖项更新。</p>
+<p>参考：<a href="https://docs.npmjs.com/cli/v7/configuring-npm/npm-shrinkwrap-json" target="_blank" rel="noopener">官网：npm-shrinkwrap.json</a></p>
+</blockquote>
+<ul>
+<li><code>npm install</code> 提示漏洞修复：<ul>
+<li><code>npm autdit</code>：分析复杂代码，查明特定漏洞和缺陷</li>
+<li><code>npm autdit fix</code>：检测项目依赖中的漏洞，自动安装需要更新的有漏洞的依赖</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-lock-文件在什么时候会被修改"><a href="#3-4-lock-文件在什么时候会被修改" class="headerlink" title="3.4 lock 文件在什么时候会被修改"></a>3.4 <code>lock</code> 文件在什么时候会被修改</h2><p><strong>修改场景</strong>：</p>
+<ul>
+<li><code>package-lock.json</code> 在 <code>npm install</code> 的时候会自动生成</li>
+<li>修改依赖位置，如从 <code>dependencies</code> 移动到 <code>devDpendencies</code> 时</li>
+<li>安装源 <code>registry</code> 不同时，执行 <code>npm install</code> 也会修改 <code>lock</code> 文件</li>
+<li>使用 <code>npm install</code> 添加或 <code>npm uninstall</code> 移除包的时候，同时也会更新  <code>lock</code></li>
+<li>当更新某个包的版本的时候，同时也会修改  <code>lock</code></li>
+</ul>
+<p><strong>建议实践</strong>：<br>由 3.3 中第三条可知：当 <code>package</code> 版本和 <code>lock</code> 版本不兼容时，<code>npm install</code> 可能会导致 lock <code></code>文件被修改。因此，建议使用 <code>npm ci</code>：</p>
+<p><code>npm ci</code>：<code>npm ci</code>  根据  <code>package-lock.json</code>  安装依赖</p>
+<ul>
+<li>如果 <code>lock</code> 的依赖项与 <code>package</code> 中的依赖项不匹配，<code>npm ci</code>将出错退出，而不是更新 <code>lock</code> 。</li>
+<li><code>npm ci</code>一次只能安装整个项目：不能使用此命令添加单个依赖项。</li>
+<li>如果 <code>node_modules</code>已经存在，它将在<code>npm ci</code>开始安装之前自动删除。</li>
+<li>安装前必须有一个现有的 <code>package-lock.json</code> 或 <code>npm-shrinkwrap.json</code> 。</li>
+</ul>
+<p>使用抉择：</p>
+<ul>
+<li><code>npm i</code> 安装新依赖或更新现有依赖 </li>
+<li><code>npm ci</code> 安装项目依赖，或在某些不修改 Lock 文件的情况下安装依赖项。用于自动化环境，例如测试平台、持续集成和部署——或者任何想要确保完全一致地安装依赖项的情况。</li>
+</ul>
+<p>参考：<a href="_https://docs.npmjs.com/cli/v6/commands/npm-ci">npm-ci | npm Docs</a></p>
+<h1 id="4-npm-缓存机制"><a href="#4-npm-缓存机制" class="headerlink" title="4 npm 缓存机制"></a>4 npm 缓存机制</h1><ul>
+<li>查看缓存：<code>npm config get cache</code></li>
+<li><code>install</code> 会先下载到缓存，然后解压到 <code>node_modules</code> 下面：<ul>
+<li>#todo <code>pacote</code></li>
+</ul>
+</li>
+<li><code>NPM V5</code> 前后的缓存策略不同，<code>V5</code> 前仅仅使用模块名的格式存储 <code>{cache}{name}{version}</code></li>
+</ul>
+<h1 id="5-包调试：npm-link"><a href="#5-包调试：npm-link" class="headerlink" title="5 包调试：npm link"></a>5 包调试：npm link</h1><p><strong>解决的痛点</strong>：本地包调试繁琐</p>
+<h2 id="5-1-繁琐的本地包调试方式"><a href="#5-1-繁琐的本地包调试方式" class="headerlink" title="5.1 繁琐的本地包调试方式"></a>5.1 繁琐的本地包调试方式</h2><ul>
+<li>发布后测试</li>
+<li>代码复制粘贴至项目文件夹测试</li>
+<li>相对路径安装：npm install path/to/my-utils —— 依赖包修改后需要重新 install</li>
+<li>软链：ln -s path/to/my-utils my-utils —— 修改同步，但指令操作麻烦，不同操作系统语法不一样</li>
+</ul>
+<h2 id="5-2-解决方法：软链"><a href="#5-2-解决方法：软链" class="headerlink" title="5.2 解决方法：软链"></a>5.2 <strong>解决方法</strong>：软链</h2><blockquote>
+<p>创建一个待发布 npm 包的全局链接(全局 npm/node_modules 目录下)，然后在主项目中链接这个依赖包</p>
+</blockquote>
+<p><strong>使用方法</strong>：</p>
+<ul>
+<li>在对应 <code>npm</code> 包下：<code>npm link</code></li>
+<li>在项目中：<code>npm link PackageName</code><ul>
+<li>链接成功判断：打印输出有两个箭头，依次连接到全局包软链接和本地包（<code>npm V6&amp;V7</code> 不再适用，可以使用 <code>realpath</code> 命令验证一个包是否链接成功</li>
+</ul>
+</li>
+<li>结束后删除软链：在项目中 <code>npm unlink PackageName</code>；在 <code>npm</code> 包下 <code>npm unlink</code></li>
+<li>其他命令：<ul>
+<li>可以直接：<code>npm link package-path</code>，显式指定链接的包的路径</li>
+<li>查看所有创建的全局链接名称 <code>npm ls --global --depth 0</code></li>
+<li>强制解除创建的某个特定全局链接 s<code>udo npm rm --global packageName</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> $ npm link my-linked-package</span><br><span class="line">~/my-package/node_modules/my-linked-package -&gt; ~/.nvm/versions/node/v14.16.1/lib/node_modules/my-linked-package -&gt; ~/my-linked-package</span><br></pre></td></tr></table></figure>
+<p><strong>实现原理</strong>：本质是一个软链接，会在公共包管理路径下连接本地依赖包，然后项目中会去公共包管理路径下寻找包</p>
+<p><strong>可能存在的坑</strong>：</p>
+<ol>
+<li><p>若系统同时安装了多个 node.js 版本，link 容易出错</p>
+<ul>
+<li>原因：不同版本的全局软链的安装路径相互独立，如果在不同版本中使用，包查找会出错</li>
+<li>查看包的全局安装路径：<code>npm root -g</code> 如果 Node 的版本出现在打印的路径中，则全局包安装路径在不同 Node.js 版本下是独立的<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm root -g</span><br><span class="line">~/.nvm/versions/node/v14.16.1/lib/node_modules</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>link</code> 失败不会报错并且会回退到直接从 <code>npm</code> 仓库进行安装</p>
+<ul>
+<li><code>npm link</code> 的时候没有找到全局的包 <code>a</code>，它就会从 <code>npm</code> 仓库上去全局安装这个包并创建一个软链接到这个包</li>
+<li>只有这个包在 <code>npm</code> 远端仓库上没有这个包，<code>npm link</code> 这个包才会失败</li>
+</ul>
+</li>
+<li>生成意料之外的命令<ul>
+<li><code>npm link</code>，如果包有 <code>bin</code> 字段，可以使包中<code>bin</code>中的命令成为能够直接通过终端执行的命令，会覆盖已经存在的的全局可执行命令</li>
+<li><code>npm unlink a</code> 只会删除本地的软链接，而不会删除全局安装的二进制命令文件</li>
+<li>使用 <code>npm uninstall --global a</code> 删除全局包和它的二进制文件</li>
+</ul>
+</li>
+<li>意料之外的删除<ul>
+<li>多次使用 <code>npm link</code> 链接不同的包，后续包连接时会默认移出之前的软链接</li>
+<li>解决方案：同时链接多个文件 <code>npm link ../pkg-a ../pkg-b</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>代替方案</strong>：</p>
+<ul>
+<li><code>npm install --no-save &lt;package-path-a&gt; &lt;package-path-b&gt; ...</code><ul>
+<li>创建一个指向包的软链接而不是全局安装</li>
+<li>类似使用 <code>npm link</code> 进行测试包的初衷</li>
+<li><code>--no-save</code>：防止包的路径保存在<code>package.json</code>中</li>
+<li>同样的，执行 <code>npm install</code> 多次会先移除之前的软链接，想一次链接多个包的话必须一次将需要链接的多个包作为参数传入</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/privatenumber/link" title="npm link" target="_blank" rel="noopener"><code>npx link</code></a>：</p>
+<ul>
+<li>不会全局安装链接的包或二进制执行文件</li>
+<li>不会删除以前的软链接</li>
+<li>可以在不同版本的 Node.js 中使用</li>
+<li>当不能解析包路径时，也会有一个执行失败报错</li>
+</ul>
+</li>
+<li><p>扩展：<a href="https://chachaz.xyz/2023/07/09/%E7%A1%AC%E9%93%BE%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/">硬链接和软连接</a></p>
+</li>
+</ul>
+<h1 id="6-从-npm-到-yarn-到-pnpm"><a href="#6-从-npm-到-yarn-到-pnpm" class="headerlink" title="6 从 npm 到 yarn 到 pnpm"></a>6 从 npm 到 yarn 到 pnpm</h1><p><code>npm V2</code>：</p>
+<ul>
+<li>嵌套地狱</li>
+<li>路径长度超出限制、重复依赖（时间长、空间大）</li>
+</ul>
+<p><code>yarn/npm v3</code> ：</p>
+<ul>
+<li>依赖扁平（仅提升一个版本）</li>
+<li>幽灵依赖（没有声明在 <code>dependencies</code> ，但在代码里却可以 <code>require</code> 进来）<ul>
+<li>依赖包的查找原理：查找一层 <code>node_modules</code>——不是。</li>
+<li><strong>node require 的机制</strong>：是在包安装时，不停的往上级的 <code>node_modules</code> 当中去寻找，如果找到就相同版本的包就不会重新安装 —— 因此未被提升的不同版本的依赖包会被多次复制；因此，项目中可以引入 <code>Node_modules</code> 中的任何包，即使没有在 <code>dependecies</code> 中声明</li>
+</ul>
+</li>
+</ul>
+<p><code>pnpm</code>：软链接</p>
+<ul>
+<li><code>pnpm install</code>：包是从全局 store 硬连接到虚拟 store 的，虚拟 store 即<code>node_modeles/.pnpm</code><ul>
+<li>虚拟 <code>store</code> 里面，依赖铺平，包之间的通过软链来相互依赖</li>
+<li>虚拟 <code>store</code> 里的子文件都为硬链接，是从全局 <code>pnpm</code> 的 <code>store</code> 硬链接生成的文件，全局 <code>Pnpm store</code> 的路径通常为 <code>User/username/Library/pnpm/store</code> 或 <code>User/username/.pnpm-store</code></li>
+</ul>
+</li>
+<li><code>node_modules</code> 根目录下，只有 <code>pacage</code> 中声明的依赖文件</li>
+<li><strong>优势</strong><ul>
+<li>不会复制多次依赖，包安装速度快、磁盘空间利用率高（即使是不同的项目都可以使用同一个包。没有被提升的依赖不会依然被复制多次</li>
+<li>没有幽灵依赖：#todo 思考（怎样实现如此安全性、规避非法访问依赖的风险）</li>
+<li>支持 <code>monorepo</code>：<code>pnpm add A -r</code> 会为所有的 <code>package</code> 子项目添加 <code>A</code> 依赖，使用 <code>--filter</code> 字段来过滤安装子项目</li>
+</ul>
+</li>
+<li><code>node_modules</code> 根目录文件为软连接，实际链接位置为<code>.pnpm/packName@version/node_modules/PackName</code>（呈上，非）</li>
+<li><code>.pnpm/packName@version/node_modules</code> 目录下，除 <code>packName</code> 文件为硬链接，其余依赖的依赖文件都是软连接</li>
+</ul>
+<p>参考资料：<br><a href="http://charming.run/2020/09/18/%E8%AF%91-Package-json%E9%80%9F%E6%9F%A5%E8%A1%A8/" target="_blank" rel="noopener">译-Package-json 速查表</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json" target="_blank" rel="noopener">官网：package.json</a><br><a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json" target="_blank" rel="noopener">官网：package-lock.json</a><br><a href="https://cloud.tencent.com/developer/article/1819632" target="_blank" rel="noopener">我的 package-lock.json 被谁改了？</a><br><a href="https://docs.npmjs.com/cli/v8/commands/npm-audit" target="_blank" rel="noopener">npm audit 官网手册</a><br><a href="https://link.juejin.cn/?target=https%3A%2F%2Fes6.ruanyifeng.com%2F%23docs%2Fmodule-loader%23package-json-%25E7%259A%2584-exports-%25E5%25AD%2597%25E6%25AE%25B5" title="https://es6.ruanyifeng.com/#docs/module-loader#package-json-%E7%9A%84-exports-%E5%AD%97%E6%AE%B5" target="_blank" rel="noopener">阮一峰 Package.json 之 exports</a><br><a href="https://hirok.io/posts/avoid-npm-link" target="_blank" rel="noopener">四个避免使用 npm link 的理由</a></p>
+
+          
         
       
     </div>
